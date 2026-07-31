@@ -4,9 +4,8 @@ const path = require('path');
 const app = express();
 const PORT = process.env.PORT || 3000;
 
-// Serve public and src folders statically
+// Serve public folder (which contains src subfolder) statically
 app.use(express.static(path.join(__dirname, 'public')));
-app.use('/src', express.static(path.join(__dirname, 'src')));
 
 // Route for homepage
 app.get('/', (req, res) => {
