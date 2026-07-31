@@ -252,6 +252,12 @@ app.get('*', (req, res) => {
   res.sendFile(path.join(__dirname, 'public', 'index.html'));
 });
 
-app.listen(PORT, () => {
-  console.log(`Shekhani LLC B2B Server running on port ${PORT}`);
-});
+// Local dev server
+if (require.main === module) {
+  app.listen(PORT, () => {
+    console.log(`Shekhani LLC B2B Server running on port ${PORT}`);
+  });
+}
+
+// Export for Vercel serverless
+module.exports = app;
