@@ -5,13 +5,25 @@
   box-sizing: border-box;
 }
 
-body {
+html, body {
   font-family: 'Inter', 'Open Sans', -apple-system, BlinkMacSystemFont, sans-serif;
   background-color: #ffffff !important;
   color: #111111;
   line-height: 1.5;
   font-size: 14px;
   -webkit-font-smoothing: antialiased;
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden !important;
+  position: relative;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+img, video, iframe, svg {
+  max-width: 100%;
 }
 
 .site-container {
@@ -1660,19 +1672,27 @@ a {
   top: 0; left: 0; width: 100%; height: 100%;
   background: rgba(0,0,0,0.6);
   opacity: 0; visibility: hidden;
+  pointer-events: none;
   transition: all 0.3s; z-index: 200;
 }
-.cart-drawer-overlay.active { opacity: 1; visibility: visible; }
+.cart-drawer-overlay.active { opacity: 1; visibility: visible; pointer-events: auto; }
 
 .cart-drawer {
-  position: fixed; top: 0; right: -420px;
+  position: fixed; top: 0; right: 0;
   width: 100%; max-width: 380px; height: 100%;
   background: #ffffff; z-index: 250;
   box-shadow: -5px 0 25px rgba(0,0,0,0.25);
   display: flex; flex-direction: column;
-  transition: right 0.3s ease;
+  transform: translateX(100%);
+  visibility: hidden;
+  pointer-events: none;
+  transition: transform 0.3s ease, visibility 0.3s ease;
 }
-.cart-drawer.active { right: 0; }
+.cart-drawer.active {
+  transform: translateX(0);
+  visibility: visible;
+  pointer-events: auto;
+}
 
 .cart-header { padding: 20px; border-bottom: 1px solid #eee; display: flex; justify-content: space-between; align-items: center; }
 .close-cart { background: none; border: none; font-size: 24px; cursor: pointer; }
