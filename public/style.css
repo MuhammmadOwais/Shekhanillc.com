@@ -2214,62 +2214,31 @@ a {
 }
 
 /* ══════════════════════════════════════
-   BREAKPOINT: ≤ 768px (Large Mobile)
-   ══════════════════════════════════════ */
-@media (max-width: 768px) {
-
-  /* Announcement bar */
-  .top-announcement-bar { font-size: 11px; padding: 8px 12px; }
-
-  /* Header */
-  .faire-header-inner { padding: 10px 16px; gap: 8px; }
-  .brand-logo img { height: 32px; }
-  .faire-search { padding: 8px 14px; }
-  .faire-search input { font-size: 12px; }
-
-  /* Pill nav — hide on very small */
-  .faire-pill-nav { display: none; }
-
-  /* Hero */
-  .hero-video-section { min-height: 440px; height: auto; padding: 40px 0; }
-  .hero-content { padding: 0 16px; }
-  .hero-title { font-size: 24px; line-height: 1.2; }
-  .hero-subtitle { font-size: 14px; }
-  .hero-cta-group { flex-direction: column; gap: 10px; width: 100%; }
-  .hero-cta-group a { width: 100%; text-align: center; }
-
-  /* Pills Single Line Horizontal Scroll */
-  .pills-group, .values-pills-group {
-    flex-wrap: nowrap !important;
-    overflow-x: auto !important;
-    scrollbar-width: none;
-    -webkit-overflow-scrolling: touch;
-    padding-bottom: 6px;
-    width: 100%;
-  }
-  .pills-group::-webkit-scrollbar, .values-pills-group::-webkit-scrollbar {
-    display: none;
-  }
-  .brand-pill, .values-pill {
-    white-space: nowrap !important;
-    flex-shrink: 0 !important;
-  }
-
-  /* Sections */
-  .section-title-faire { font-size: 22px; }
-  .category-pills-row { gap: 6px; }
-  .category-pill { padding: 7px 14px; font-size: 12px; }
-
-  /* Grids */
+   BREAKPOINT: ≤ 768px (  /* Grids & Cards Overflow Fix */
   .grow-cards-grid { grid-template-columns: 1fr; }
   .brand-cards-grid { grid-template-columns: 1fr; }
-  .bestsellers-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; }
+  .bestsellers-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
+  .bestseller-card { min-width: 0; padding: 8px; }
+  .bestseller-img-box { height: 130px; }
+  .unlock-price-btn { font-size: 10px; padding: 6px 4px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; text-align: center; }
+  
   .editorial-header { flex-direction: column; gap: 10px; }
-  .footer-widgets { grid-template-columns: 1fr; }
-  .pop-categories-grid { grid-template-columns: repeat(2, 1fr); }
-  .shekhani-product-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; }
+  .pop-categories-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .shekhani-product-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
+  .shekhani-card { min-width: 0; }
+  .card-content-body { padding: 12px; }
+  .card-img-wrapper { height: 160px; }
+  .card-title { font-size: 13px; margin-bottom: 8px; height: 36px; }
+  
+  /* Product Card Price & Button Stacking on Mobile */
+  .card-price-row { flex-direction: column; align-items: stretch; gap: 8px; padding-top: 8px; }
+  .price-box { display: flex; flex-direction: row; align-items: baseline; justify-content: space-between; width: 100%; }
+  .card-price { font-size: 15px; }
+  .wholesale-tag { font-size: 9px; }
+  .add-btn { width: 100%; text-align: center; padding: 8px 0; font-size: 11px; white-space: nowrap; border-radius: 4px; margin-top: 4px; }
+
   .retailer-3col-grid { grid-template-columns: 1fr; }
-  .featured-brands-grid { grid-template-columns: repeat(2, 1fr); }
+  .featured-brands-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .mclane-stats-grid { grid-template-columns: 1fr; }
 
   /* Shop page */
@@ -2281,8 +2250,22 @@ a {
   .single-product-layout { grid-template-columns: 1fr; gap: 20px; }
   .product-gallery { height: 300px; }
 
-  /* Footer */
-  .footer-bottom-content { flex-direction: column; text-align: center; }
+  /* COMPACT 2-COLUMN MOBILE FOOTER */
+  .site-footer { padding-top: 28px; }
+  .footer-widgets {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    gap: 20px 14px;
+    padding-bottom: 20px;
+  }
+  .footer-brand-col { grid-column: 1 / -1; }
+  .footer-brand-col p { max-width: 100%; margin-bottom: 8px; font-size: 12px; line-height: 1.5; }
+  .footer-heading { margin-bottom: 10px; font-size: 12px; }
+  .footer-links li { margin-bottom: 5px; }
+  .footer-links a { font-size: 12px; }
+  .newsletter-col { grid-column: 1 / -1; margin-top: 4px; }
+  .newsletter-subtext { font-size: 11px; margin-bottom: 8px; }
+  .footer-bottom-bar { padding: 14px 0; }
+  .footer-bottom-content { flex-direction: column; text-align: center; gap: 10px; }
   .footer-newsletter-form { flex-direction: column; gap: 8px; }
   .footer-newsletter-form input { width: 100%; border-radius: 6px; }
   .footer-newsletter-form button { border-radius: 6px; }
@@ -2308,7 +2291,7 @@ a {
   .site-container { width: 100%; padding: 0 16px; }
 
   /* Featured brands section */
-  .featured-brands-section { padding: 40px 16px; }
+  .featured-brands-section { padding: 30px 16px; }
   .brand-card-img { height: 180px; }
 
   /* Sections padding */
@@ -2339,13 +2322,12 @@ a {
   .hero-title { font-size: 20px; }
   .hero-subtitle { font-size: 13px; }
 
-
   /* Products */
-  .bestsellers-grid { grid-template-columns: repeat(2, 1fr); gap: 8px; }
-  .bestseller-img-box { height: 120px; }
-  .shekhani-product-grid { grid-template-columns: repeat(2, 1fr); gap: 8px; }
-  .pop-categories-grid { grid-template-columns: repeat(2, 1fr); gap: 8px; }
-  .pop-cat-card { height: 110px; }
+  .bestsellers-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; }
+  .bestseller-img-box { height: 110px; }
+  .shekhani-product-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; }
+  .pop-categories-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; }
+  .pop-cat-card { height: 100px; }
 
   /* Grow cards */
   .grow-cards-grid { grid-template-columns: 1fr; }
@@ -2364,9 +2346,9 @@ a {
   .editorial-image-banner { height: 200px; }
 
   /* Footer */
-  .footer-brand-name { font-size: 20px; }
-  .footer-col h4 { font-size: 12px; }
-  .footer-nav-link { font-size: 13px; }
+  .footer-brand-name { font-size: 18px; }
+  .footer-col h4 { font-size: 11px; }
+  .footer-nav-link { font-size: 12px; }
   .pay-badge { padding: 3px 8px; font-size: 9px; }
 
   /* Auth modal */
@@ -2378,6 +2360,7 @@ a {
   .retailer-center-content h2 { font-size: 20px; }
   .retailer-center-content p { font-size: 14px; }
 }
+
 
 /* ══════════════════════════════════════
    BREAKPOINT: ≤ 360px (XS Mobile)
