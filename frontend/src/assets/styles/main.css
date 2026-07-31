@@ -1,0 +1,127 @@
+/* ==========================================================================
+   Black, White & Seafoam Teal/Turquoise Brand Design System
+   ========================================================================== */
+
+:root {
+  --font-primary: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-serif: Georgia, 'Times New Roman', serif;
+
+  /* Exact Seafoam Teal/Turquoise Color Palette */
+  --color-turquoise: #00bfa5;
+  --color-turquoise-dark: #009e89;
+  --color-turquoise-light: #e0f7f5;
+  --color-turquoise-glow: rgba(0, 191, 165, 0.25);
+
+  --color-black: #111111;
+  --color-black-card: #1e1e1e;
+  --color-gray-dark: #222222;
+  --color-gray-body: #444444;
+  --color-gray-muted: #888888;
+  --color-gray-light: #f5f5f5;
+  --color-gray-border: #e8e8e8;
+  --color-white: #ffffff;
+
+  --shadow-card: 0 4px 16px rgba(0, 0, 0, 0.06);
+  --shadow-dropdown: 0 8px 24px rgba(0, 0, 0, 0.15);
+  
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-pill: 24px;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html, body {
+  font-family: var(--font-primary);
+  background-color: var(--color-white) !important;
+  color: var(--color-black);
+  line-height: 1.5;
+  font-size: 14px;
+  -webkit-font-smoothing: antialiased;
+  width: 100%;
+}
+
+/* Strict Background Lock when Mobile Drawer / Overlay is open */
+html.scroll-locked,
+body.scroll-locked {
+  overflow: hidden !important;
+  height: 100% !important;
+  touch-action: none !important;
+  -webkit-overflow-scrolling: auto !important;
+  position: relative;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button {
+  font-family: inherit;
+  cursor: pointer;
+  border: none;
+  background: none;
+}
+
+img, video {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+.site-container {
+  width: 94%;
+  max-width: 1280px;
+  margin: 0 auto;
+}
+
+.hidden {
+  display: none !important;
+}
+
+/* Primary Buttons with Seafoam Teal/Turquoise Color */
+.btn-primary-turquoise {
+  display: inline-block;
+  background: var(--color-turquoise);
+  color: #ffffff;
+  padding: 12px 30px;
+  font-size: 12px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  border-radius: var(--radius-sm);
+  transition: all 0.2s;
+  cursor: pointer;
+  border: none;
+  box-shadow: 0 4px 12px rgba(0, 191, 165, 0.35);
+}
+
+.btn-primary-turquoise:hover {
+  background: var(--color-turquoise-dark);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(0, 191, 165, 0.45);
+}
+
+.btn-outline-white {
+  display: inline-block;
+  background: transparent;
+  color: #ffffff;
+  border: 2px solid #ffffff;
+  padding: 10px 28px;
+  font-size: 12px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  border-radius: var(--radius-sm);
+  transition: all 0.2s;
+  cursor: pointer;
+}
+
+.btn-outline-white:hover {
+  background: #ffffff;
+  color: #000000;
+}

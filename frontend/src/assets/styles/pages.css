@@ -1,0 +1,316 @@
+/* ==========================================================================
+   Hero Section, Page Layouts & Full Width Legal Documentation Stylesheet
+   ========================================================================== */
+
+/* Seamless Dual-Video Hero Section */
+.hero-video-section {
+  position: relative;
+  width: 100%;
+  height: 520px;
+  background: #000000;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+}
+
+.hero-video-wrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+}
+
+.hero-video {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transform: translate(-50%, -50%);
+  opacity: 0;
+  transition: opacity 1.2s ease-in-out;
+}
+
+.hero-video.active {
+  opacity: 1;
+}
+
+.hero-video-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 2;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 3;
+  color: #ffffff;
+  max-width: 680px;
+}
+
+/* Glassmorphism Luxury Hero Tag Badge */
+.hero-tag-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.28);
+  padding: 7px 18px;
+  border-radius: 30px;
+  margin-bottom: 22px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+}
+
+.hero-badge-dot {
+  width: 8px;
+  height: 8px;
+  background-color: var(--color-turquoise, #00bfa5);
+  border-radius: 50%;
+  display: inline-block;
+  box-shadow: 0 0 10px var(--color-turquoise, #00bfa5);
+  animation: pulse-glow 2s infinite ease-in-out;
+}
+
+@keyframes pulse-glow {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.6; transform: scale(1.2); }
+}
+
+.hero-badge-text {
+  font-size: 12px;
+  font-weight: 800;
+  color: #ffffff;
+  letter-spacing: 2.2px;
+  text-transform: uppercase;
+}
+
+.hero-title {
+  font-family: var(--font-serif, Georgia, serif);
+  font-size: 42px;
+  font-weight: 400;
+  line-height: 1.18;
+  margin-bottom: 18px;
+  letter-spacing: -0.4px;
+  color: #ffffff;
+}
+
+.hero-subtitle {
+  font-size: 15.5px;
+  color: #e2e8f0;
+  line-height: 1.6;
+  margin-bottom: 30px;
+  font-weight: 400;
+}
+
+.hero-cta-group {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+
+.btn-hero-white {
+  background: #ffffff;
+  color: #111111;
+  border: 1px solid #ffffff;
+  padding: 12px 28px;
+  font-size: 14px;
+  font-weight: 700;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.2s;
+  text-transform: none;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.15);
+}
+
+.btn-hero-white:hover {
+  background: #f0f0f0;
+  transform: translateY(-1px);
+}
+
+.btn-hero-outline {
+  background: transparent;
+  color: #ffffff;
+  border: 1px solid #ffffff;
+  padding: 12px 28px;
+  font-size: 14px;
+  font-weight: 700;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.2s;
+  text-transform: none;
+}
+
+.btn-hero-outline:hover {
+  background: rgba(255, 255, 255, 0.2);
+  transform: translateY(-1px);
+}
+
+/* Catalog Filter Section */
+.catalog-filter-section {
+  padding: 40px 0 20px;
+  background: #ffffff;
+}
+
+.filter-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.filter-header h2 {
+  font-size: 22px;
+  font-weight: 800;
+  color: #111111;
+}
+
+.results-count {
+  font-size: 13px;
+  color: #777777;
+  font-weight: 500;
+}
+
+/* Products Grid Section */
+.products-section {
+  padding-bottom: 60px;
+  background: #ffffff;
+}
+
+.products-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 24px;
+}
+
+/* Loader & Empty States */
+.loader-container {
+  text-align: center;
+  padding: 60px 0;
+  color: #666666;
+}
+
+.spinner {
+  width: 40px;
+  height: 40px;
+  border: 3px solid rgba(0, 0, 0, 0.1);
+  border-top-color: var(--color-turquoise);
+  border-radius: 50%;
+  animation: spin 0.8s infinite linear;
+  margin: 0 auto 12px;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+.empty-state {
+  text-align: center;
+  padding: 60px 20px;
+  background: #f9f9f9;
+  border: 1px solid #e8e8e8;
+  border-radius: 8px;
+  color: #666666;
+}
+
+.empty-state h3 {
+  font-size: 20px;
+  color: #111111;
+  margin-bottom: 8px;
+}
+
+/* ==========================================================================
+   FULL WIDTH PROFESSIONAL LEGAL DOCUMENTATION PAGES
+   ========================================================================== */
+.legal-page-wrapper-full {
+  background-color: #ffffff;
+  padding: 50px 0 90px;
+  min-height: 80vh;
+  width: 100%;
+}
+
+.legal-full-container {
+  width: 92%;
+  max-width: 1280px;
+  margin: 0 auto;
+}
+
+.legal-title-full {
+  font-family: var(--font-serif);
+  font-size: 3rem;
+  font-weight: 700;
+  color: #0f172a;
+  line-height: 1.25;
+  margin-bottom: 36px;
+  padding-bottom: 24px;
+  border-bottom: 3px solid var(--color-turquoise);
+  letter-spacing: -0.5px;
+}
+
+.legal-content-full {
+  color: #334155;
+  line-height: 1.8;
+  font-size: 15px;
+}
+
+.legal-section {
+  margin-bottom: 36px;
+}
+
+.legal-section h2 {
+  font-size: 20px;
+  font-weight: 800;
+  color: #0f172a;
+  margin-bottom: 14px;
+  letter-spacing: -0.2px;
+}
+
+.legal-section p {
+  margin-bottom: 14px;
+}
+
+.legal-list {
+  list-style: none;
+  padding-left: 0;
+  margin: 14px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.legal-list li {
+  padding-left: 4px;
+  line-height: 1.65;
+}
+
+@media (max-width: 768px) {
+  .hero-video-section {
+    height: 460px;
+  }
+  .hero-title {
+    font-size: 30px;
+  }
+  .hero-subtitle {
+    font-size: 14px;
+  }
+  .legal-page-wrapper-full {
+    padding: 30px 0 60px;
+  }
+  .legal-title-full {
+    font-size: 2rem;
+    margin-bottom: 24px;
+    padding-bottom: 16px;
+  }
+  .legal-section h2 {
+    font-size: 17px;
+  }
+}

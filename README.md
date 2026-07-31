@@ -1,49 +1,35 @@
-# Hostinger Node.js E-Commerce Store (Dummy Setup)
+# Shekhani LLC - B2B Wholesale Marketplace & Supply Chain Distributor
 
-Yeh simple aur stylish Node.js + Express dummy E-Commerce store hai jo Hostinger ki **Node.js Web App Hosting** par easily deploy ho jayegi.
+![Shekhani LLC Logo](https://res.cloudinary.com/sfjl53dg/image/upload/v1785445037/logoshekhanillc_an7mdq.png)
 
----
-
-## 📁 Project Structure
-
-```text
-├── public/
-│   ├── index.html       # Storefront UI
-│   ├── style.css        # Modern Styling (Dark Theme & Responsive)
-│   └── app.js           # Cart & API interaction logic
-├── server.js            # Express Node.js Server & APIs
-├── package.json         # Project configuration & start script
-└── README.md
-```
+A premier B2B wholesale marketplace and nationwide supply chain distributor connecting independent retail store owners with leading brand manufacturers. Headquartered in Chesterfield, Missouri, USA.
 
 ---
 
-## 🚀 Hostinger Deploy Steps (Kaise Upload Karen)
+## Tech Stack
 
-1. **Zip File Banayein:**
-   - Apni local folder me tamam files (`server.js`, `package.json`, `public/` folder) ko select karein aur ZIP file banayein (`store.zip`).
-   - *Note: `node_modules` folder zip me shayad include nah karen taakay size chota rahe.*
-
-2. **Hostinger Panel Setup:**
-   - Hostinger hPanel par login karein.
-   - **Websites** -> **Web Apps** / **Node.js** Section me jayein.
-   - **Create Application** par click karein.
-   - Set parameters:
-     - **Node.js version:** `18.x` ya `20.x`
-     - **Application Root:** `/` (ya apka folder path)
-     - **Application Startup File:** `server.js`
-
-3. **Upload & Install Dependencies:**
-   - Hostinger File Manager se apny `store.zip` ko upload karky Extract karein.
-   - Hostinger Node.js panel me **Run Npm Install** button par click karein taakay `express` aur `cors` install ho jayein.
-   - App ko **Start / Restart** karein.
+- **Frontend**: Vanilla HTML5, CSS3 (no frameworks), ES6 JavaScript Modules
+- **Backend**: Node.js + Express.js REST API
+- **Database**: MongoDB
+- **Deployment**: Vercel (Frontend) + Backend API
 
 ---
 
-## 💻 Local Run (Testing ke liye)
+## Features
 
-```bash
-npm install
-npm start
-```
-Browser me `http://localhost:3000` open karein.
+- Wholesale product catalog with 11+ categories
+- B2B pricing and Add to Cart flow
+- SPA (Single Page Application) with client-side routing
+- Blog, Help Center, Contact, and About pages
+- SEO and GEO (Generative Engine Optimization) optimized with JSON-LD schemas
+- `llms.txt` context file for AI chatbot recommendations
+- XML Sitemap and robots.txt
+
+---
+
+## Contact
+
+- **Email**: haris@shekhanillc.com
+- **Phone**: +1 (314) 904-9538
+- **Address**: 1120 Weidman Rd, Chesterfield, MO 63017, USA
+- **Website**: [shekhanillc.com](https://shekhanillc.com)
