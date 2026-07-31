@@ -10,6 +10,27 @@ function setLang(code, label) {
   console.log('Language set to:', label);
 }
 
+// ─────── MOBILE NAV DRAWER ───────
+function openMobileNav() {
+  const drawer = document.getElementById('mobileNavDrawer');
+  const panel  = document.getElementById('mobileNavPanel');
+  if (!drawer) return;
+  drawer.classList.add('is-open');
+  setTimeout(() => panel && panel.classList.add('slide-in'), 10);
+  document.body.style.overflow = 'hidden';
+}
+
+function closeMobileNav() {
+  const drawer = document.getElementById('mobileNavDrawer');
+  const panel  = document.getElementById('mobileNavPanel');
+  if (!drawer) return;
+  panel && panel.classList.remove('slide-in');
+  setTimeout(() => {
+    drawer.classList.remove('is-open');
+    document.body.style.overflow = '';
+  }, 300);
+}
+
 document.addEventListener('DOMContentLoaded', function () {
   // All Categories Dropdown
   const allCatsBtn = document.getElementById('allCatsBtn');
@@ -38,7 +59,22 @@ document.addEventListener('DOMContentLoaded', function () {
     allCatsWrap && allCatsWrap.classList.remove('open');
     langSelector && langSelector.classList.remove('open');
   });
+
+  // Mobile Nav Drawer handlers
+  const hamburgerBtn    = document.getElementById('hamburgerBtn');
+  const mobileCloseBtn  = document.getElementById('mobileCloseBtn');
+  const mobileBackdrop  = document.getElementById('mobileNavBackdrop');
+
+  hamburgerBtn   && hamburgerBtn.addEventListener('click',   openMobileNav);
+  mobileCloseBtn && mobileCloseBtn.addEventListener('click', closeMobileNav);
+  mobileBackdrop && mobileBackdrop.addEventListener('click', closeMobileNav);
+
+  // Close mobile nav on ESC
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') closeMobileNav();
+  });
 });
+
 
 let products = [];
 let cart = [];

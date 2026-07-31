@@ -74,9 +74,48 @@
         <a href="javascript:void(0)" onclick="document.getElementById('authModal').classList.add('active')" class="faire-nav-link">Sign in</a>
         <a href="javascript:void(0)" onclick="document.getElementById('authModal').classList.add('active')" class="faire-signup-btn">Sign up to buy</a>
         <div class="cart-widget" id="cartToggle" style="display:none"><strong id="headerCartTotal">$0.00</strong></div>
+        <button class="hamburger-btn" id="hamburgerBtn" aria-label="Open menu">
+          <span></span><span></span><span></span>
+        </button>
       </div>
     </div>
   </header>
+
+  <!-- Mobile Nav Drawer -->
+  <div class="mobile-nav-drawer" id="mobileNavDrawer">
+    <div class="mobile-nav-backdrop" id="mobileNavBackdrop"></div>
+    <div class="mobile-nav-panel" id="mobileNavPanel">
+      <div class="mobile-nav-header">
+        <img src="https://res.cloudinary.com/sfjl53dg/image/upload/v1785445037/logoshekhanillc_an7mdq.png" alt="Shekhani LLC">
+        <button class="mobile-close-btn" id="mobileCloseBtn">&#x2715;</button>
+      </div>
+      <div class="mobile-nav-links">
+        <a href="index.html">&#127968; Home</a>
+        <a href="shop.html">&#128722; Wholesale Catalog</a>
+        <a href="about.html">&#9432; About Us</a>
+        <a href="contact.html">&#128222; Contact Us</a>
+        <div class="mobile-nav-section-title">Categories</div>
+        <a href="shop.html">Art &amp; Craft</a>
+        <a href="shop.html">Beauty &amp; Personal Care</a>
+        <a href="shop.html">DIY &amp; Tools</a>
+        <a href="shop.html">Fashion</a>
+        <a href="shop.html">Food &amp; Drink</a>
+        <a href="shop.html">Golf</a>
+        <a href="shop.html">Home &amp; Kitchen</a>
+        <a href="shop.html">Household &amp; Health</a>
+        <a href="shop.html">Jewellery</a>
+        <a href="shop.html">Office Supplies</a>
+        <a href="shop.html">Patio &amp; Garden</a>
+        <a href="shop.html">Pet Supplies</a>
+        <a href="shop.html">Toys &amp; Games</a>
+      </div>
+      <div class="mobile-nav-cta-group">
+        <a href="javascript:void(0)" onclick="document.getElementById('authModal').classList.add('active');closeMobileNav()" class="mobile-cta-buy">Sign up to buy</a>
+        <a href="javascript:void(0)" onclick="document.getElementById('authModal').classList.add('active');closeMobileNav()" class="mobile-cta-sell">Sign up to sell</a>
+        <a href="javascript:void(0)" onclick="document.getElementById('authModal').classList.add('active');closeMobileNav()" class="mobile-cta-sell">Sign in</a>
+      </div>
+    </div>
+  </div>
 
   <!-- Tier 3: Category Pill Strip -->
   <nav class="faire-pill-nav">

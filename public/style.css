@@ -1995,8 +1995,173 @@ a {
   font-size: 12px;
 }
 
-/* Responsive */
+/* ═══════════════════════════════════════════════════
+   COMPREHENSIVE MOBILE RESPONSIVE SYSTEM
+   Breakpoints: 1200px | 992px | 768px | 480px | 360px
+   ═══════════════════════════════════════════════════ */
+
+/* ─── HAMBURGER MENU BUTTON ─── */
+.hamburger-btn {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+  width: 40px;
+  height: 40px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 6px;
+  border-radius: 6px;
+  transition: background 0.2s;
+  flex-shrink: 0;
+}
+.hamburger-btn:hover { background: #f5f5f5; }
+.hamburger-btn span {
+  display: block;
+  width: 22px;
+  height: 2px;
+  background: #111111;
+  border-radius: 2px;
+  transition: all 0.3s ease;
+}
+.hamburger-btn.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.hamburger-btn.open span:nth-child(2) { opacity: 0; transform: scaleX(0); }
+.hamburger-btn.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+/* ─── MOBILE DRAWER NAV ─── */
+.mobile-nav-drawer {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 500;
+}
+.mobile-nav-backdrop {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: rgba(0,0,0,0.45);
+  backdrop-filter: blur(2px);
+}
+.mobile-nav-panel {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: min(300px, 82vw);
+  height: 100%;
+  background: #ffffff;
+  box-shadow: 4px 0 24px rgba(0,0,0,0.18);
+  overflow-y: auto;
+  transform: translateX(-100%);
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.mobile-nav-panel.slide-in { transform: translateX(0); }
+
+.mobile-nav-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 20px;
+  border-bottom: 1px solid #f0f0f0;
+}
+.mobile-nav-header img { height: 32px; width: auto; }
+.mobile-close-btn {
+  width: 32px; height: 32px;
+  background: #f5f5f5;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  font-size: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #333;
+}
+
+.mobile-nav-links {
+  padding: 16px 0;
+}
+.mobile-nav-links a,
+.mobile-nav-section-title {
+  display: block;
+  padding: 14px 24px;
+  font-size: 15px;
+  font-weight: 600;
+  color: #111111;
+  border-bottom: 1px solid #f5f5f5;
+  transition: background 0.15s;
+}
+.mobile-nav-links a:hover { background: #f9f9f9; }
+.mobile-nav-section-title {
+  font-size: 11px;
+  font-weight: 700;
+  color: #999999;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  padding-top: 20px;
+  border-bottom: none;
+}
+.mobile-nav-cta-group {
+  padding: 20px 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  border-top: 1px solid #f0f0f0;
+  margin-top: 8px;
+}
+.mobile-nav-cta-group a {
+  display: block;
+  text-align: center;
+  padding: 12px 20px;
+  border-radius: 24px;
+  font-size: 14px;
+  font-weight: 700;
+}
+.mobile-cta-buy {
+  background: #111111;
+  color: #ffffff !important;
+}
+.mobile-cta-sell {
+  background: #f5f5f5;
+  color: #111111 !important;
+  border: 1px solid #dddddd;
+}
+
+/* ══════════════════════════════════════
+   BREAKPOINT: ≤ 1200px (Tablet Landscape)
+   ══════════════════════════════════════ */
+@media (max-width: 1200px) {
+  .faire-header-inner { padding: 12px 20px; gap: 10px; }
+  .faire-actions { gap: 8px; }
+  .faire-nav-link { font-size: 12px; }
+  .faire-signup-btn { padding: 9px 16px; font-size: 12px; }
+  .bestsellers-grid { grid-template-columns: repeat(4, 1fr); }
+  .featured-brands-grid { grid-template-columns: repeat(2, 1fr); }
+  .faire-pill-inner { padding: 0 16px; }
+}
+
+/* ══════════════════════════════════════
+   BREAKPOINT: ≤ 992px (Tablet Portrait)
+   ══════════════════════════════════════ */
 @media (max-width: 992px) {
+
+  /* Header — hide desktop links, show hamburger */
+  .faire-nav-link,
+  .faire-signup-btn,
+  .lang-selector { display: none; }
+  .hamburger-btn { display: flex; }
+  .faire-search { min-width: 0; }
+  .all-cats-wrap { display: none; }
+
+  /* Pill nav scroll */
+  .faire-pill-inner { padding: 0 12px; gap: 0; }
+  .pill-link { padding: 12px 14px; font-size: 12px; }
+
+  /* Grids */
   .values-content-grid { grid-template-columns: 1fr; }
   .try-brands-grid { grid-template-columns: 1fr; }
   .grow-cards-grid { grid-template-columns: repeat(2, 1fr); }
@@ -2004,27 +2169,191 @@ a {
   .bestsellers-grid { grid-template-columns: repeat(3, 1fr); }
   .retailer-3col-grid { grid-template-columns: 1fr; }
   .footer-widgets { grid-template-columns: repeat(2, 1fr); }
-  .hero-title { font-size: 34px; }
-  .hero-video-section { height: 440px; }
   .pop-categories-grid { grid-template-columns: repeat(3, 1fr); }
   .shekhani-product-grid { grid-template-columns: repeat(2, 1fr); }
   .mclane-stats-grid { grid-template-columns: repeat(2, 1fr); gap: 20px; }
   .stat-box { border-right: none; border-bottom: 1px solid #222222; padding-bottom: 15px; }
   .corporate-banner-grid { grid-template-columns: 1fr; }
   .why-choose-grid { grid-template-columns: 1fr; }
-}
+  .featured-brands-grid { grid-template-columns: repeat(2, 1fr); }
 
-@media (max-width: 768px) {
-  .grow-cards-grid { grid-template-columns: 1fr; }
-  .brand-cards-grid { grid-template-columns: 1fr; }
-  .bestsellers-grid { grid-template-columns: repeat(2, 1fr); }
-  .editorial-header { flex-direction: column; gap: 15px; }
-  .footer-widgets { grid-template-columns: 1fr; }
-  .header-inner { flex-direction: column; gap: 14px; }
-  .header-search { max-width: 100%; }
+  /* Hero */
+  .hero-video-section { height: 380px; }
+  .hero-title { font-size: 32px; }
+  .hero-subtitle { font-size: 16px; }
+
+  /* Shop */
   .shop-layout { grid-template-columns: 1fr; }
+  .filters-sidebar { display: none; }
   .single-product-layout { grid-template-columns: 1fr; }
   .contact-grid { grid-template-columns: 1fr; }
-  .pop-categories-grid { grid-template-columns: repeat(2, 1fr); }
-  .nav-menu { overflow-x: auto; white-space: nowrap; }
+  .editorial-title-box h2 { font-size: 28px; }
+  .editorial-title-box h3 { font-size: 24px; }
+  .editorial-desc-box p { font-size: 16px; }
+  .editorial-image-banner { height: 340px; }
 }
+
+/* ══════════════════════════════════════
+   BREAKPOINT: ≤ 768px (Large Mobile)
+   ══════════════════════════════════════ */
+@media (max-width: 768px) {
+
+  /* Announcement bar */
+  .top-announcement-bar { font-size: 11px; padding: 8px 12px; }
+
+  /* Header */
+  .faire-header-inner { padding: 10px 16px; gap: 8px; }
+  .brand-logo img { height: 32px; }
+  .faire-search { padding: 8px 14px; }
+  .faire-search input { font-size: 12px; }
+
+  /* Pill nav — hide on very small */
+  .faire-pill-nav { display: none; }
+
+  /* Hero */
+  .hero-video-section { height: 280px; }
+  .hero-content { padding: 0 16px; }
+  .hero-title { font-size: 24px; line-height: 1.2; }
+  .hero-subtitle { font-size: 14px; }
+  .hero-cta-group { flex-direction: column; gap: 10px; width: 100%; }
+  .hero-cta-group a { width: 100%; text-align: center; }
+
+  /* Sections */
+  .section-title-faire { font-size: 22px; }
+  .category-pills-row { gap: 6px; }
+  .category-pill { padding: 7px 14px; font-size: 12px; }
+
+  /* Grids */
+  .grow-cards-grid { grid-template-columns: 1fr; }
+  .brand-cards-grid { grid-template-columns: 1fr; }
+  .bestsellers-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; }
+  .editorial-header { flex-direction: column; gap: 10px; }
+  .footer-widgets { grid-template-columns: 1fr; }
+  .pop-categories-grid { grid-template-columns: repeat(2, 1fr); }
+  .shekhani-product-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; }
+  .retailer-3col-grid { grid-template-columns: 1fr; }
+  .featured-brands-grid { grid-template-columns: repeat(2, 1fr); }
+  .mclane-stats-grid { grid-template-columns: 1fr; }
+
+  /* Shop page */
+  .shop-layout { grid-template-columns: 1fr; }
+  .filters-sidebar { display: none; }
+  .product-grid-area { width: 100%; }
+
+  /* Product detail */
+  .single-product-layout { grid-template-columns: 1fr; gap: 20px; }
+  .product-gallery { height: 300px; }
+
+  /* Footer */
+  .footer-bottom-content { flex-direction: column; text-align: center; }
+  .footer-newsletter-form { flex-direction: column; gap: 8px; }
+  .footer-newsletter-form input { width: 100%; border-radius: 6px; }
+  .footer-newsletter-form button { border-radius: 6px; }
+  .retailer-img-box { height: 260px; }
+  .editorial-image-banner { height: 240px; }
+  .editorial-title-box h2 { font-size: 24px; }
+
+  /* Contact */
+  .contact-grid { grid-template-columns: 1fr; }
+
+  /* Auth modal */
+  .auth-modal-box { width: 94vw; padding: 24px 20px; }
+
+  /* Cookie consent */
+  .cookie-consent-popup { padding: 20px 16px; }
+  .cookie-actions { flex-direction: column; gap: 8px; }
+  .cookie-actions button { width: 100%; }
+
+  /* Cart drawer */
+  .cart-drawer { width: 100%; max-width: 100%; }
+
+  /* Site container */
+  .site-container { width: 100%; padding: 0 16px; }
+
+  /* Featured brands section */
+  .featured-brands-section { padding: 40px 16px; }
+  .brand-card-img { height: 180px; }
+
+  /* Sections padding */
+  .editorial-section,
+  .bestsellers-section,
+  .for-any-retailer-section,
+  .try-section,
+  .growth-section,
+  .pop-categories-section,
+  .featured-brands-section { padding-left: 16px; padding-right: 16px; }
+
+  /* Retailer section stack */
+  .retailer-center-content h2 { font-size: 22px; }
+}
+
+/* ══════════════════════════════════════
+   BREAKPOINT: ≤ 480px (Small Mobile)
+   ══════════════════════════════════════ */
+@media (max-width: 480px) {
+  .faire-header-inner { padding: 8px 12px; gap: 6px; }
+  .brand-logo img { height: 28px; }
+  .faire-search { padding: 7px 12px; border-radius: 20px; }
+  .faire-search input { font-size: 11px; }
+  .faire-search-icon { width: 14px; height: 14px; }
+
+  /* Hero */
+  .hero-video-section { height: 240px; }
+  .hero-title { font-size: 20px; }
+  .hero-subtitle { font-size: 13px; }
+
+  /* Products */
+  .bestsellers-grid { grid-template-columns: repeat(2, 1fr); gap: 8px; }
+  .bestseller-img-box { height: 120px; }
+  .shekhani-product-grid { grid-template-columns: repeat(2, 1fr); gap: 8px; }
+  .pop-categories-grid { grid-template-columns: repeat(2, 1fr); gap: 8px; }
+  .pop-cat-card { height: 110px; }
+
+  /* Grow cards */
+  .grow-cards-grid { grid-template-columns: 1fr; }
+  .featured-brands-grid { grid-template-columns: 1fr; }
+  .brand-cards-grid { grid-template-columns: 1fr; }
+
+  /* Product detail */
+  .product-title { font-size: 20px; }
+  .product-price { font-size: 24px; }
+  .product-gallery { height: 260px; }
+
+  /* Sections */
+  .section-title-faire { font-size: 20px; }
+  .editorial-title-box h2 { font-size: 20px; }
+  .editorial-title-box h3 { font-size: 18px; }
+  .editorial-image-banner { height: 200px; }
+
+  /* Footer */
+  .footer-brand-name { font-size: 20px; }
+  .footer-col h4 { font-size: 12px; }
+  .footer-nav-link { font-size: 13px; }
+  .pay-badge { padding: 3px 8px; font-size: 9px; }
+
+  /* Auth modal */
+  .auth-modal-box { padding: 20px 16px; border-radius: 12px; }
+  .auth-tab-btn { font-size: 13px; padding: 10px 16px; }
+
+  /* Retailer */
+  .retailer-img-box { height: 200px; }
+  .retailer-center-content h2 { font-size: 20px; }
+  .retailer-center-content p { font-size: 14px; }
+}
+
+/* ══════════════════════════════════════
+   BREAKPOINT: ≤ 360px (XS Mobile)
+   ══════════════════════════════════════ */
+@media (max-width: 360px) {
+  .hero-title { font-size: 18px; }
+  .bestsellers-grid { grid-template-columns: 1fr; }
+  .shekhani-product-grid { grid-template-columns: 1fr; }
+  .pop-categories-grid { grid-template-columns: repeat(2, 1fr); }
+  .auth-modal-box { padding: 16px 12px; }
+  .faire-search input::placeholder { font-size: 10px; }
+}
+
+/* ─── MOBILE NAV DRAWER OPEN STATE ─── */
+.mobile-nav-drawer.is-open { display: block; }
+.mobile-nav-drawer.is-open .mobile-nav-panel { transform: translateX(0); }
+
