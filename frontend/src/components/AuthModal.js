@@ -13,9 +13,8 @@ export function renderAuthModal(containerId) {
         
         <!-- Top Bar -->
         <div class="auth-header-bar">
-          <span class="auth-back-btn" id="authBackBtn" title="Back">&larr;</span>
           <div class="auth-brand-logo">S H E K H A N I</div>
-          <span class="auth-close-btn" id="authCloseBtn">&times;</span>
+          <span class="auth-close-btn" id="authCloseBtn" title="Close">&times;</span>
         </div>
 
         <!-- Response Toast Notification -->

@@ -592,22 +592,11 @@
 .auth-header-bar {
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
+  position: relative;
   margin-bottom: 1rem;
   padding-bottom: 0.6rem;
   border-bottom: 1px solid #eaeaea;
-}
-
-.auth-back-btn {
-  font-size: 1.2rem;
-  color: #333333;
-  cursor: pointer;
-  transition: transform 0.2s;
-}
-
-.auth-back-btn:hover {
-  transform: translateX(-3px);
-  color: var(--color-turquoise-dark);
 }
 
 .auth-brand-logo {
@@ -616,9 +605,12 @@
   font-weight: 700;
   letter-spacing: 4px;
   color: #111111;
+  text-align: center;
 }
 
 .auth-close-btn {
+  position: absolute;
+  right: 0;
   font-size: 1.5rem;
   color: #475569;
   cursor: pointer;
