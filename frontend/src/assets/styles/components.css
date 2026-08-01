@@ -620,13 +620,22 @@
 
 .auth-close-btn {
   font-size: 1.5rem;
-  color: #888888;
+  color: #475569;
   cursor: pointer;
-  transition: color 0.2s;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: #f1f5f9;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+  transition: all 0.2s ease;
 }
 
 .auth-close-btn:hover {
-  color: #111111;
+  background: #e2e8f0;
+  color: #0f172a;
 }
 
 .auth-title {
@@ -884,30 +893,33 @@
 
   .auth-backdrop {
     align-items: flex-start;
-    padding: 0.5rem 0.5rem 1.5rem 0.5rem;
-  }
-
-  .auth-modal-card {
-    padding: 1rem 1.1rem 1.25rem;
-    margin-top: 0.25rem;
-    max-height: 94vh;
+    padding: max(45px, env(safe-area-inset-top)) 10px 30px 10px;
     overflow-y: auto;
   }
 
+  .auth-modal-card {
+    padding: 1.1rem 1.1rem 1.25rem;
+    margin-top: 0;
+    max-height: none;
+    overflow: visible;
+  }
+
   .auth-header-bar {
-    position: sticky;
+    position: relative;
     top: 0;
-    background: #ffffff;
-    z-index: 20;
-    margin-bottom: 0.5rem;
-    padding-top: 0.25rem;
-    padding-bottom: 0.4rem;
+    background: transparent;
+    margin-bottom: 0.75rem;
+    padding-top: 0;
+    padding-bottom: 0.5rem;
   }
 
   .auth-close-btn {
-    font-size: 1.75rem;
-    padding: 0 4px;
-    line-height: 1;
+    font-size: 1.6rem;
+    width: 34px;
+    height: 34px;
+    background: #f1f5f9;
+    color: #0f172a;
+    font-weight: 700;
   }
   
   .auth-form-grid {
