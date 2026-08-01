@@ -13,14 +13,14 @@
   <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
   <link rel="canonical" href="https://shekhanillc.com/">
   
-  <link rel="icon" type="image/png" href="https://res.cloudinary.com/sfjl53dg/image/upload/v1785445037/feviconshekhanillc_zboefw.png">
+  <link rel="icon" type="image/png" href="https://res.cloudinary.com/sfjl53dg/image/upload/v1785541119/fevicon_k1pbb2.png">
 
   <!-- Open Graph Meta Tags (Facebook & Social Media) -->
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://shekhanillc.com/">
   <meta property="og:title" content="Shekhani LLC – Premier B2B Wholesale Marketplace Distributor">
   <meta property="og:description" content="Connecting independent retail store owners and brand manufacturers with nationwide B2B wholesale logistics and volume discounts.">
-  <meta property="og:image" content="https://res.cloudinary.com/sfjl53dg/image/upload/v1785445037/logoshekhanillc_an7mdq.png">
+  <meta property="og:image" content="https://res.cloudinary.com/sfjl53dg/image/upload/v1785541119/logoshekhanilc_fa0vxy.png">
   <meta property="og:site_name" content="Shekhani LLC">
   <meta property="og:locale" content="en_US">
 
@@ -139,22 +139,40 @@
   <!-- Navbar Component Container (Announcement Bar + Header) -->
   <div id="navbarContainer"></div>
 
-  <!-- Category Pills Component Container -->
-  <div id="categoryPills"></div>
+  <!-- Category Pills Component Container (Hidden from Navigation) -->
+  <div id="categoryPills" style="display: none;"></div>
 
   <!-- Hero Video Section Container -->
   <div id="heroContainer"></div>
 
-  <!-- Featured Brands Component Container (Right Below Hero Section) -->
-  <div id="featuredBrandsContainer"></div>
+  <!-- Trusted By Brands & Marketplaces Container -->
+  <div id="trustedMarketplacesContainer"></div>
 
-  <!-- Bestsellers Slider Component Container (Right Below Featured Brands) -->
-  <div id="bestsellersContainer"></div>
+  <!-- Services Green Gradient Section Container -->
+  <div id="servicesSectionContainer"></div>
 
-  <!-- Explore Categories Component Container (Right Below Bestsellers) -->
-  <div id="exploreCategoriesContainer"></div>
+  <!-- Interactive Launch, Sell, Ship, Grow Tabbed Section Container -->
+  <div id="interactiveTabbedContainer"></div>
 
-  <!-- Home Blog Section Container (Prominent Dark Background Section) -->
+  <!-- How It Works Section Container -->
+  <div id="howItWorksSectionContainer"></div>
+
+  <!-- Value Proposition Comparison Container -->
+  <div id="valuePropContainer"></div>
+
+  <!-- Partner Evaluation Lead Form Container -->
+  <div id="partnerFormContainer"></div>
+
+  <!-- Featured Brands Component Container -->
+  <div id="featuredBrandsContainer" style="display: none;"></div>
+
+  <!-- Bestsellers Slider Component Container (Hidden from Homepage) -->
+  <div id="bestsellersContainer" style="display: none;"></div>
+
+  <!-- Explore Categories Component Container (Hidden from Homepage) -->
+  <div id="exploreCategoriesContainer" style="display: none;"></div>
+
+  <!-- Home Blog Section Container -->
   <div id="homeBlogSectionContainer"></div>
 
   <!-- Dynamic SPA Pages Container -->
@@ -173,7 +191,7 @@
 
   <!-- Initialize Application Page Script -->
   <script type="module">
-    import { initHomePage } from './src/pages/HomePage.js';
+    import { initHomePage } from './src/pages/HomePage.js?v=b2b_v37';
     document.addEventListener('DOMContentLoaded', initHomePage);
   </script>
 </body>
