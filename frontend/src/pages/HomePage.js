@@ -9,6 +9,8 @@ import { renderHowItWorksSection } from '../components/HowItWorksSection.js?v=b2
 import { renderValuePropComparison } from '../components/ValuePropComparison.js?v=b2b_v2';
 import { renderPartnerQualificationForm } from '../components/PartnerQualificationForm.js?v=b2b_v3';
 import { renderHomeBlogSection } from '../components/HomeBlogSection.js?v=b2b_v1';
+import { renderPerformanceProofSection } from '../components/PerformanceProofSection.js?v=b2b_v1';
+import { renderGoogleVisibilitySection } from '../components/GoogleVisibilitySection.js?v=b2b_v1';
 import { renderProductModal, closeProductModal } from '../components/ProductModal.js?v=b2b_v1';
 import { renderAuthModal } from '../components/AuthModal.js?v=b2b_v1';
 
@@ -60,7 +62,9 @@ export function initHomePage() {
   // DOM Containers
   const heroContainer = document.getElementById('heroContainer');
   const trustedMarketplacesContainer = document.getElementById('trustedMarketplacesContainer');
+  const performanceProofContainer = document.getElementById('performanceProofContainer');
   const servicesSectionContainer = document.getElementById('servicesSectionContainer');
+  const googleVisibilityContainer = document.getElementById('googleVisibilityContainer');
   const interactiveTabbedContainer = document.getElementById('interactiveTabbedContainer');
   const howItWorksSectionContainer = document.getElementById('howItWorksSectionContainer');
   const valuePropContainer = document.getElementById('valuePropContainer');
@@ -151,7 +155,9 @@ export function initHomePage() {
       // Hide Homepage Components
       if (heroContainer) heroContainer.style.display = 'none';
       if (trustedMarketplacesContainer) trustedMarketplacesContainer.style.display = 'none';
+      if (performanceProofContainer) performanceProofContainer.style.display = 'none';
       if (servicesSectionContainer) servicesSectionContainer.style.display = 'none';
+      if (googleVisibilityContainer) googleVisibilityContainer.style.display = 'none';
       if (interactiveTabbedContainer) interactiveTabbedContainer.style.display = 'none';
       if (howItWorksSectionContainer) howItWorksSectionContainer.style.display = 'none';
       if (valuePropContainer) valuePropContainer.style.display = 'none';
@@ -376,7 +382,9 @@ export function initHomePage() {
       pageContainer.style.display = 'none';
       if (heroContainer) heroContainer.style.display = 'block';
       if (trustedMarketplacesContainer) trustedMarketplacesContainer.style.display = 'block';
+      if (performanceProofContainer) performanceProofContainer.style.display = 'block';
       if (servicesSectionContainer) servicesSectionContainer.style.display = 'block';
+      if (googleVisibilityContainer) googleVisibilityContainer.style.display = 'block';
       if (interactiveTabbedContainer) interactiveTabbedContainer.style.display = 'block';
       if (howItWorksSectionContainer) howItWorksSectionContainer.style.display = 'block';
       if (valuePropContainer) valuePropContainer.style.display = 'block';
@@ -421,8 +429,14 @@ export function initHomePage() {
   // Render Trusted By Brands & Marketplaces Component Right Below Hero
   renderTrustedMarketplaces('trustedMarketplacesContainer');
 
-  // Render Services Green Gradient Section Right Below Trusted Marketplaces
+  // Render Verified Performance & ROAS Proof Section Below Trusted Marketplaces
+  renderPerformanceProofSection('performanceProofContainer');
+
+  // Render Services Green Gradient Section Right Below Performance Proof
   renderServicesSection('servicesSectionContainer');
+
+  // Render Google & Search Engine Visibility Section Right Below Services Section
+  renderGoogleVisibilitySection('googleVisibilityContainer');
 
   // Render Interactive Launch, Sell, Ship, Grow Tabbed Section
   renderInteractiveTabbedSection('interactiveTabbedContainer');
