@@ -11,6 +11,9 @@ import { renderPartnerQualificationForm } from '../components/PartnerQualificati
 import { renderHomeBlogSection } from '../components/HomeBlogSection.js?v=b2b_v1';
 import { renderPerformanceProofSection } from '../components/PerformanceProofSection.js?v=b2b_v1';
 import { renderGoogleVisibilitySection } from '../components/GoogleVisibilitySection.js?v=b2b_v1';
+import { renderIntakeWizardModal, openIntakeWizardModal } from '../components/IntakeWizardModal.js?v=b2b_v1';
+import { renderListingBeforeAfterSlider } from '../components/ListingBeforeAfterSlider.js?v=b2b_v1';
+import { renderLiveChannelRadar } from '../components/LiveChannelRadar.js?v=b2b_v1';
 import { renderProductModal, closeProductModal } from '../components/ProductModal.js?v=b2b_v1';
 import { renderAuthModal } from '../components/AuthModal.js?v=b2b_v1';
 
@@ -63,7 +66,9 @@ export function initHomePage() {
   const heroContainer = document.getElementById('heroContainer');
   const trustedMarketplacesContainer = document.getElementById('trustedMarketplacesContainer');
   const performanceProofContainer = document.getElementById('performanceProofContainer');
+  const channelRadarContainer = document.getElementById('channelRadarContainer');
   const servicesSectionContainer = document.getElementById('servicesSectionContainer');
+  const beforeAfterContainer = document.getElementById('beforeAfterContainer');
   const googleVisibilityContainer = document.getElementById('googleVisibilityContainer');
   const interactiveTabbedContainer = document.getElementById('interactiveTabbedContainer');
   const howItWorksSectionContainer = document.getElementById('howItWorksSectionContainer');
@@ -84,8 +89,9 @@ export function initHomePage() {
     '/global-market-expansion': renderGlobalMarketExpansionPage
   };
 
-  // Render Auth Modal Container
+  // Render Auth Modal & Intake Wizard Container
   renderAuthModal('authModalContainer');
+  renderIntakeWizardModal('intakeWizardModalContainer');
 
   /**
    * Category Slugs Mapping
@@ -151,12 +157,13 @@ export function initHomePage() {
 
     const serviceRenderer = servicePageRenderers[path];
 
-    if (serviceRenderer) {
-      // Hide Homepage Components
+    function hideAllHomepageSections() {
       if (heroContainer) heroContainer.style.display = 'none';
       if (trustedMarketplacesContainer) trustedMarketplacesContainer.style.display = 'none';
       if (performanceProofContainer) performanceProofContainer.style.display = 'none';
+      if (channelRadarContainer) channelRadarContainer.style.display = 'none';
       if (servicesSectionContainer) servicesSectionContainer.style.display = 'none';
+      if (beforeAfterContainer) beforeAfterContainer.style.display = 'none';
       if (googleVisibilityContainer) googleVisibilityContainer.style.display = 'none';
       if (interactiveTabbedContainer) interactiveTabbedContainer.style.display = 'none';
       if (howItWorksSectionContainer) howItWorksSectionContainer.style.display = 'none';
@@ -167,27 +174,17 @@ export function initHomePage() {
       if (exploreCategoriesContainer) exploreCategoriesContainer.style.display = 'none';
       if (homeBlogSectionContainer) homeBlogSectionContainer.style.display = 'none';
       if (categoryPills) categoryPills.style.display = 'none';
+    }
+
+    if (serviceRenderer) {
+      hideAllHomepageSections();
       pageContainer.style.display = 'block';
 
       serviceRenderer('pageContainer');
       window.scrollTo({ top: 0, behavior: 'smooth' });
 
     } else if (policyKey) {
-      // Hide Homepage Components
-      if (heroContainer) heroContainer.style.display = 'none';
-      if (trustedMarketplacesContainer) trustedMarketplacesContainer.style.display = 'none';
-      if (performanceProofContainer) performanceProofContainer.style.display = 'none';
-      if (servicesSectionContainer) servicesSectionContainer.style.display = 'none';
-      if (googleVisibilityContainer) googleVisibilityContainer.style.display = 'none';
-      if (interactiveTabbedContainer) interactiveTabbedContainer.style.display = 'none';
-      if (howItWorksSectionContainer) howItWorksSectionContainer.style.display = 'none';
-      if (valuePropContainer) valuePropContainer.style.display = 'none';
-      if (partnerFormContainer) partnerFormContainer.style.display = 'none';
-      if (featuredBrandsContainer) featuredBrandsContainer.style.display = 'none';
-      if (bestsellersContainer) bestsellersContainer.style.display = 'none';
-      if (exploreCategoriesContainer) exploreCategoriesContainer.style.display = 'none';
-      if (homeBlogSectionContainer) homeBlogSectionContainer.style.display = 'none';
-      if (categoryPills) categoryPills.style.display = 'none';
+      hideAllHomepageSections();
       pageContainer.style.display = 'block';
 
       if (policyKey === 'terms') renderTermsOfServicePage('pageContainer');
@@ -199,105 +196,35 @@ export function initHomePage() {
       window.scrollTo({ top: 0, behavior: 'smooth' });
 
     } else if (path === '/about') {
-      // Render Dedicated About Us Page Component
-      if (heroContainer) heroContainer.style.display = 'none';
-      if (trustedMarketplacesContainer) trustedMarketplacesContainer.style.display = 'none';
-      if (performanceProofContainer) performanceProofContainer.style.display = 'none';
-      if (servicesSectionContainer) servicesSectionContainer.style.display = 'none';
-      if (googleVisibilityContainer) googleVisibilityContainer.style.display = 'none';
-      if (interactiveTabbedContainer) interactiveTabbedContainer.style.display = 'none';
-      if (howItWorksSectionContainer) howItWorksSectionContainer.style.display = 'none';
-      if (valuePropContainer) valuePropContainer.style.display = 'none';
-      if (partnerFormContainer) partnerFormContainer.style.display = 'none';
-      if (featuredBrandsContainer) featuredBrandsContainer.style.display = 'none';
-      if (bestsellersContainer) bestsellersContainer.style.display = 'none';
-      if (exploreCategoriesContainer) exploreCategoriesContainer.style.display = 'none';
-      if (homeBlogSectionContainer) homeBlogSectionContainer.style.display = 'none';
-      if (categoryPills) categoryPills.style.display = 'none';
+      hideAllHomepageSections();
       pageContainer.style.display = 'block';
 
       renderAboutUsPage('pageContainer');
       window.scrollTo({ top: 0, behavior: 'smooth' });
 
     } else if (path === '/contact') {
-      // Render Dedicated Contact Page Component
-      if (heroContainer) heroContainer.style.display = 'none';
-      if (trustedMarketplacesContainer) trustedMarketplacesContainer.style.display = 'none';
-      if (performanceProofContainer) performanceProofContainer.style.display = 'none';
-      if (servicesSectionContainer) servicesSectionContainer.style.display = 'none';
-      if (googleVisibilityContainer) googleVisibilityContainer.style.display = 'none';
-      if (interactiveTabbedContainer) interactiveTabbedContainer.style.display = 'none';
-      if (howItWorksSectionContainer) howItWorksSectionContainer.style.display = 'none';
-      if (valuePropContainer) valuePropContainer.style.display = 'none';
-      if (partnerFormContainer) partnerFormContainer.style.display = 'none';
-      if (featuredBrandsContainer) featuredBrandsContainer.style.display = 'none';
-      if (bestsellersContainer) bestsellersContainer.style.display = 'none';
-      if (exploreCategoriesContainer) exploreCategoriesContainer.style.display = 'none';
-      if (homeBlogSectionContainer) homeBlogSectionContainer.style.display = 'none';
-      if (categoryPills) categoryPills.style.display = 'none';
+      hideAllHomepageSections();
       pageContainer.style.display = 'block';
 
       renderContactPage('pageContainer');
       window.scrollTo({ top: 0, behavior: 'smooth' });
 
     } else if (path === '/support') {
-      // Render Dedicated Help Center Page Component
-      if (heroContainer) heroContainer.style.display = 'none';
-      if (trustedMarketplacesContainer) trustedMarketplacesContainer.style.display = 'none';
-      if (performanceProofContainer) performanceProofContainer.style.display = 'none';
-      if (servicesSectionContainer) servicesSectionContainer.style.display = 'none';
-      if (googleVisibilityContainer) googleVisibilityContainer.style.display = 'none';
-      if (interactiveTabbedContainer) interactiveTabbedContainer.style.display = 'none';
-      if (howItWorksSectionContainer) howItWorksSectionContainer.style.display = 'none';
-      if (valuePropContainer) valuePropContainer.style.display = 'none';
-      if (partnerFormContainer) partnerFormContainer.style.display = 'none';
-      if (featuredBrandsContainer) featuredBrandsContainer.style.display = 'none';
-      if (bestsellersContainer) bestsellersContainer.style.display = 'none';
-      if (exploreCategoriesContainer) exploreCategoriesContainer.style.display = 'none';
-      if (homeBlogSectionContainer) homeBlogSectionContainer.style.display = 'none';
-      if (categoryPills) categoryPills.style.display = 'none';
+      hideAllHomepageSections();
       pageContainer.style.display = 'block';
 
       renderHelpCenterPage('pageContainer');
       window.scrollTo({ top: 0, behavior: 'smooth' });
 
     } else if (path === '/blog') {
-      // Render Dedicated Blog Page Component
-      if (heroContainer) heroContainer.style.display = 'none';
-      if (trustedMarketplacesContainer) trustedMarketplacesContainer.style.display = 'none';
-      if (performanceProofContainer) performanceProofContainer.style.display = 'none';
-      if (servicesSectionContainer) servicesSectionContainer.style.display = 'none';
-      if (googleVisibilityContainer) googleVisibilityContainer.style.display = 'none';
-      if (interactiveTabbedContainer) interactiveTabbedContainer.style.display = 'none';
-      if (howItWorksSectionContainer) howItWorksSectionContainer.style.display = 'none';
-      if (valuePropContainer) valuePropContainer.style.display = 'none';
-      if (partnerFormContainer) partnerFormContainer.style.display = 'none';
-      if (featuredBrandsContainer) featuredBrandsContainer.style.display = 'none';
-      if (bestsellersContainer) bestsellersContainer.style.display = 'none';
-      if (exploreCategoriesContainer) exploreCategoriesContainer.style.display = 'none';
-      if (homeBlogSectionContainer) homeBlogSectionContainer.style.display = 'none';
-      if (categoryPills) categoryPills.style.display = 'none';
+      hideAllHomepageSections();
       pageContainer.style.display = 'block';
 
       renderBlogPage('pageContainer');
       window.scrollTo({ top: 0, behavior: 'smooth' });
 
     } else if (path === '/shop') {
-      // Render Dedicated Shop Page Component
-      if (heroContainer) heroContainer.style.display = 'none';
-      if (trustedMarketplacesContainer) trustedMarketplacesContainer.style.display = 'none';
-      if (performanceProofContainer) performanceProofContainer.style.display = 'none';
-      if (servicesSectionContainer) servicesSectionContainer.style.display = 'none';
-      if (googleVisibilityContainer) googleVisibilityContainer.style.display = 'none';
-      if (interactiveTabbedContainer) interactiveTabbedContainer.style.display = 'none';
-      if (howItWorksSectionContainer) howItWorksSectionContainer.style.display = 'none';
-      if (valuePropContainer) valuePropContainer.style.display = 'none';
-      if (partnerFormContainer) partnerFormContainer.style.display = 'none';
-      if (featuredBrandsContainer) featuredBrandsContainer.style.display = 'none';
-      if (bestsellersContainer) bestsellersContainer.style.display = 'none';
-      if (exploreCategoriesContainer) exploreCategoriesContainer.style.display = 'none';
-      if (homeBlogSectionContainer) homeBlogSectionContainer.style.display = 'none';
-      if (categoryPills) categoryPills.style.display = 'none';
+      hideAllHomepageSections();
       pageContainer.style.display = 'block';
 
       renderShopPage('pageContainer', {
@@ -319,21 +246,7 @@ export function initHomePage() {
       window.scrollTo({ top: 0, behavior: 'smooth' });
 
     } else if (path === '/cart') {
-      // Render Dedicated Cart Page Component
-      if (heroContainer) heroContainer.style.display = 'none';
-      if (trustedMarketplacesContainer) trustedMarketplacesContainer.style.display = 'none';
-      if (performanceProofContainer) performanceProofContainer.style.display = 'none';
-      if (servicesSectionContainer) servicesSectionContainer.style.display = 'none';
-      if (googleVisibilityContainer) googleVisibilityContainer.style.display = 'none';
-      if (interactiveTabbedContainer) interactiveTabbedContainer.style.display = 'none';
-      if (howItWorksSectionContainer) howItWorksSectionContainer.style.display = 'none';
-      if (valuePropContainer) valuePropContainer.style.display = 'none';
-      if (partnerFormContainer) partnerFormContainer.style.display = 'none';
-      if (featuredBrandsContainer) featuredBrandsContainer.style.display = 'none';
-      if (bestsellersContainer) bestsellersContainer.style.display = 'none';
-      if (exploreCategoriesContainer) exploreCategoriesContainer.style.display = 'none';
-      if (homeBlogSectionContainer) homeBlogSectionContainer.style.display = 'none';
-      if (categoryPills) categoryPills.style.display = 'none';
+      hideAllHomepageSections();
       pageContainer.style.display = 'block';
 
       const renderCartView = () => {
@@ -359,21 +272,7 @@ export function initHomePage() {
       window.scrollTo({ top: 0, behavior: 'smooth' });
 
     } else if (categoryRenderer) {
-      // Render Specific Category Page Component (e.g. GolfPage.js, FashionPage.js)
-      if (heroContainer) heroContainer.style.display = 'none';
-      if (trustedMarketplacesContainer) trustedMarketplacesContainer.style.display = 'none';
-      if (performanceProofContainer) performanceProofContainer.style.display = 'none';
-      if (servicesSectionContainer) servicesSectionContainer.style.display = 'none';
-      if (googleVisibilityContainer) googleVisibilityContainer.style.display = 'none';
-      if (interactiveTabbedContainer) interactiveTabbedContainer.style.display = 'none';
-      if (howItWorksSectionContainer) howItWorksSectionContainer.style.display = 'none';
-      if (valuePropContainer) valuePropContainer.style.display = 'none';
-      if (partnerFormContainer) partnerFormContainer.style.display = 'none';
-      if (featuredBrandsContainer) featuredBrandsContainer.style.display = 'none';
-      if (bestsellersContainer) bestsellersContainer.style.display = 'none';
-      if (exploreCategoriesContainer) exploreCategoriesContainer.style.display = 'none';
-      if (homeBlogSectionContainer) homeBlogSectionContainer.style.display = 'none';
-      if (categoryPills) categoryPills.style.display = 'none';
+      hideAllHomepageSections();
       pageContainer.style.display = 'block';
 
       categoryRenderer('pageContainer', {
@@ -399,7 +298,9 @@ export function initHomePage() {
       if (heroContainer) heroContainer.style.display = 'block';
       if (trustedMarketplacesContainer) trustedMarketplacesContainer.style.display = 'block';
       if (performanceProofContainer) performanceProofContainer.style.display = 'block';
+      if (channelRadarContainer) channelRadarContainer.style.display = 'block';
       if (servicesSectionContainer) servicesSectionContainer.style.display = 'block';
+      if (beforeAfterContainer) beforeAfterContainer.style.display = 'block';
       if (googleVisibilityContainer) googleVisibilityContainer.style.display = 'block';
       if (interactiveTabbedContainer) interactiveTabbedContainer.style.display = 'block';
       if (howItWorksSectionContainer) howItWorksSectionContainer.style.display = 'block';
@@ -448,10 +349,16 @@ export function initHomePage() {
   // Render Verified Performance & ROAS Proof Section Below Trusted Marketplaces
   renderPerformanceProofSection('performanceProofContainer');
 
-  // Render Services Green Gradient Section Right Below Performance Proof
+  // Render Live Omnichannel Retail Ecosystem Radar Below Performance Proof
+  renderLiveChannelRadar('channelRadarContainer');
+
+  // Render Services Green Gradient Section Right Below Live Channel Radar
   renderServicesSection('servicesSectionContainer');
 
-  // Render Google & Search Engine Visibility Section Right Below Services Section
+  // Render Storefront Listing Before & After Transformation Slider Below Services
+  renderListingBeforeAfterSlider('beforeAfterContainer');
+
+  // Render Google & Search Engine Visibility Section Right Below Listing Slider
   renderGoogleVisibilitySection('googleVisibilityContainer');
 
   // Render Interactive Launch, Sell, Ship, Grow Tabbed Section
@@ -500,36 +407,36 @@ export function initHomePage() {
 
         <div class="spreetail-hero-container">
           <h1 class="spreetail-hero-title">
-            Ecommerce is complex.<br>
-            <span class="spreetail-title-highlight">We handle the heavy lifting.</span>
+            Accelerate Your Brand Across Global Marketplaces.<br>
+            <span class="spreetail-title-highlight">Zero Risk. Total Brand Control.</span>
           </h1>
 
           <p class="spreetail-hero-subtitle">
-            We partner with global brands, optimize and rank their store listings across search and marketplaces, improve product presentation, and scale their sales across Amazon, Walmart, eBay, TikTok Shop and international channels at zero upfront cost.
+            We buy your inventory upfront, optimize your product listings, enforce MAP pricing, and scale your brand across Amazon, Walmart, eBay, and TikTok Shop worldwide.
           </p>
 
           <div class="spreetail-hero-cta-row">
-            <button class="spreetail-btn-emerald" id="heroPartnerBtn">Partner With Us</button>
-            <button class="spreetail-btn-outline" id="heroHowBtn">How It Works</button>
+            <button class="spreetail-btn-emerald" id="heroPartnerBtn">Submit Brand For Evaluation</button>
+            <button class="spreetail-btn-outline" id="heroHowBtn">Explore Distribution Model</button>
           </div>
 
           <!-- Stat Metrics Row -->
           <div class="spreetail-stats-row">
             <div class="stat-card">
-              <div class="stat-number">40%+</div>
-              <div class="stat-label">Average Year 1 Sales Growth</div>
+              <div class="stat-number">$10M+</div>
+              <div class="stat-label">Capital Deployed in Inventory Buyouts</div>
             </div>
             <div class="stat-card">
               <div class="stat-number">99.8%</div>
-              <div class="stat-label">On-Time Marketplace Dispatch</div>
-            </div>
-            <div class="stat-card">
-              <div class="stat-number">6+</div>
-              <div class="stat-label">Major Selling Platforms</div>
+              <div class="stat-label">On-Time Order Fulfillment</div>
             </div>
             <div class="stat-card">
               <div class="stat-number">100%</div>
-              <div class="stat-label">Zero Upfront Cost Guarantee</div>
+              <div class="stat-label">MAP & Brand Control Enforcement</div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-number">4+</div>
+              <div class="stat-label">Global Retail Marketplaces</div>
             </div>
           </div>
         </div>
@@ -611,6 +518,11 @@ export function initHomePage() {
           cursor: pointer;
           transition: all 0.25s ease;
           box-shadow: 0 4px 20px rgba(0, 208, 132, 0.3);
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          text-align: center;
+          height: 48px;
         }
         .spreetail-btn-emerald:hover {
           background: #00b371;
@@ -627,6 +539,11 @@ export function initHomePage() {
           font-weight: 600;
           cursor: pointer;
           transition: all 0.25s ease;
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          text-align: center;
+          height: 48px;
         }
         .spreetail-btn-outline:hover {
           border-color: #ffffff;
@@ -675,16 +592,22 @@ export function initHomePage() {
             margin-bottom: 22px;
           }
           .spreetail-hero-cta-row {
-            flex-direction: row !important;
+            flex-direction: flex;
+            align-items: stretch;
+            justify-content: center;
             gap: 10px;
             margin-bottom: 32px;
           }
           .spreetail-btn-emerald, .spreetail-btn-outline {
             width: auto;
             flex: 1;
-            padding: 10px 8px;
+            padding: 10px 12px;
             font-size: 12px;
-            white-space: nowrap;
+            height: auto;
+            min-height: 48px;
+            white-space: normal;
+            word-break: break-word;
+            line-height: 1.35;
           }
           .spreetail-stats-row {
             grid-template-columns: repeat(4, 1fr) !important;
@@ -704,10 +627,7 @@ export function initHomePage() {
     `;
 
     document.getElementById('heroPartnerBtn')?.addEventListener('click', () => {
-      const section = document.getElementById('partnerFormSection');
-      if (section) {
-        section.scrollIntoView({ behavior: 'smooth' });
-      }
+      openIntakeWizardModal();
     });
 
     document.getElementById('heroHowBtn')?.addEventListener('click', () => {

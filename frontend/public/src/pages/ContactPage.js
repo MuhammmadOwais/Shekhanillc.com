@@ -1,8 +1,9 @@
 /**
  * Corporate Level Contact Page Component for Shekhani LLC
  * Route: /contact
- * Light B2B Theme, Clean Modern Form, Google Maps Embed & Corporate Info Cards
+ * Uses the Homepage PartnerQualificationForm (Submit Your Brand For Evaluation) & Corporate Info
  */
+import { renderPartnerQualificationForm } from '../components/PartnerQualificationForm.js';
 
 export function renderContactPage(containerId) {
   const container = document.getElementById(containerId);
@@ -44,7 +45,7 @@ export function renderContactPage(containerId) {
               </div>
               <div class="contact-info-detail">
                 <h3>Email Support</h3>
-                <p><a href="mailto:haris@shekhanillc.com" style="color: inherit; text-decoration: none;">haris@shekhanillc.com</a></p>
+                <p><a href="mailto:sales@shekhanillc.com" style="color: inherit; text-decoration: none;">sales@shekhanillc.com</a></p>
                 <span>Our team responds within 24 hours</span>
               </div>
             </div>
@@ -56,61 +57,14 @@ export function renderContactPage(containerId) {
               <div class="contact-info-detail">
                 <h3>Headquarters</h3>
                 <p>Shekhani LLC</p>
-                <span>1120 Weidman Rd Chesterfield 63017 MO US</span>
+                <span>Chesterfield 63017 MO US</span>
               </div>
             </div>
           </div>
 
-          <!-- Right Side Contact Form Card -->
+          <!-- Right Side Homepage Partner Qualification Form -->
           <div class="contact-form-card">
-            <h2 class="form-card-title">Send Us A Message</h2>
-            <p class="form-card-sub">Fill out the form below and a brand representative will contact you.</p>
-
-            <form id="contactPageForm">
-              <div class="contact-form-row">
-                <div class="contact-form-group">
-                  <label class="contact-form-label" for="contactFirstName">First Name *</label>
-                  <input type="text" id="contactFirstName" class="contact-form-input" placeholder="e.g. John" required>
-                </div>
-                <div class="contact-form-group">
-                  <label class="contact-form-label" for="contactLastName">Last Name *</label>
-                  <input type="text" id="contactLastName" class="contact-form-input" placeholder="e.g. Smith" required>
-                </div>
-              </div>
-
-              <div class="contact-form-row">
-                <div class="contact-form-group">
-                  <label class="contact-form-label" for="contactPageEmail">Work Email *</label>
-                  <input type="email" id="contactPageEmail" class="contact-form-input" placeholder="john@company.com" required>
-                </div>
-                <div class="contact-form-group">
-                  <label class="contact-form-label" for="contactPagePhone">Phone Number</label>
-                  <input type="tel" id="contactPagePhone" class="contact-form-input" placeholder="+1 (555) 000-0000">
-                </div>
-              </div>
-
-              <div class="contact-form-group">
-                <label class="contact-form-label" for="contactInquiryType">Inquiry Subject *</label>
-                <select id="contactInquiryType" class="contact-form-select" required>
-                  <option value="" disabled selected>Select an option...</option>
-                  <option value="Wholesale Partnership">Wholesale Partnership</option>
-                  <option value="Full Marketplace Management">Full Marketplace Management</option>
-                  <option value="Listing & Creative Overhaul">Listing & Creative Overhaul</option>
-                  <option value="General Question">General Question</option>
-                </select>
-              </div>
-
-              <div class="contact-form-group">
-                <label class="contact-form-label" for="contactMessage">Message *</label>
-                <textarea id="contactMessage" class="contact-form-textarea" placeholder="Tell us about your brand catalog and goals..." required></textarea>
-              </div>
-
-              <button type="submit" class="btn-submit-inquiry" id="btnSubmitInquiry">
-                Send Message
-              </button>
-
-              <div id="contactPageStatusMsg" class="contact-status-msg hidden"></div>
-            </form>
+            <div id="contactFormContainer"></div>
           </div>
 
         </div>
@@ -143,7 +97,7 @@ export function renderContactPage(containerId) {
       .contact-hero-banner {
         background: #ffffff;
         color: #0f172a;
-        padding: 50px 20px 36px;
+        padding: 56px 20px 40px;
         text-align: center;
         border-bottom: 1px solid #e2e8f0;
       }
@@ -165,192 +119,106 @@ export function renderContactPage(containerId) {
         border: 1px solid #86efac;
       }
       .contact-hero-title {
-        font-size: 36px;
+        font-size: 38px;
         font-weight: 800;
         color: #0f172a;
-        margin: 0 0 10px 0;
-        letter-spacing: -0.8px;
+        margin: 0 0 12px 0;
+        letter-spacing: -1px;
         font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
       }
       .contact-hero-sub {
-        font-size: 15px;
+        font-size: 15.5px;
         color: #475569;
-        line-height: 1.5;
+        line-height: 1.6;
         margin: 0;
       }
       .contact-main-container {
-        width: 92%;
-        max-width: 1240px;
+        max-width: 1200px;
         margin: 40px auto 0 auto;
+        padding: 0 20px;
       }
       .contact-grid {
         display: grid;
-        grid-template-columns: 1fr 1.3fr;
+        grid-template-columns: 340px 1fr;
         gap: 32px;
-        margin-bottom: 40px;
       }
       .contact-info-column {
         display: flex;
         flex-direction: column;
-        gap: 18px;
+        gap: 16px;
       }
       .contact-info-card {
         background: #ffffff;
         border: 1px solid #e2e8f0;
         border-radius: 14px;
-        padding: 22px 24px;
-        box-shadow: 0 4px 16px rgba(0, 0, 0, 0.03);
+        padding: 24px 20px;
         display: flex;
         align-items: flex-start;
         gap: 16px;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.03);
         transition: all 0.25s ease;
       }
       .contact-info-card:hover {
-        transform: translateY(-2px);
         border-color: #00d084;
-        box-shadow: 0 8px 24px rgba(0, 208, 132, 0.12);
+        transform: translateY(-2px);
       }
       .contact-icon-box {
         width: 44px;
         height: 44px;
-        border-radius: 10px;
         background: #dcfce7;
         color: #059669;
+        border-radius: 10px;
         display: flex;
         align-items: center;
         justify-content: center;
         flex-shrink: 0;
-        border: 1px solid #86efac;
       }
       .contact-info-detail h3 {
-        font-size: 11px;
+        font-size: 15px;
         font-weight: 800;
-        text-transform: uppercase;
-        letter-spacing: 1px;
-        color: #059669;
+        color: #0f172a;
         margin: 0 0 4px 0;
       }
       .contact-info-detail p {
-        font-size: 15px;
+        font-size: 14px;
         font-weight: 700;
-        color: #0f172a;
+        color: #059669;
         margin: 0 0 2px 0;
       }
       .contact-info-detail span {
-        font-size: 12.5px;
+        font-size: 12px;
         color: #64748b;
       }
       .contact-form-card {
         background: #ffffff;
-        border: 1px solid #cbd5e1;
-        border-radius: 14px;
-        padding: 30px;
-        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
+        border: 1px solid #e2e8f0;
+        border-radius: 16px;
+        padding: 10px 24px 24px;
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.04);
       }
-      .form-card-title {
-        font-size: 24px;
+
+      /* Google Maps Embed */
+      .google-map-section {
+        margin-top: 48px;
+        background: #ffffff;
+        border: 1px solid #e2e8f0;
+        border-radius: 16px;
+        padding: 32px;
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.04);
+      }
+      .map-header-title {
+        font-size: 22px;
         font-weight: 800;
         color: #0f172a;
-        margin: 0 0 6px 0;
-        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+        margin: 0 0 4px 0;
       }
-      .form-card-sub {
+      .map-header-sub {
         font-size: 13.5px;
         color: #64748b;
         margin: 0 0 20px 0;
       }
-      .contact-form-row {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 14px;
-      }
-      .contact-form-group {
-        margin-bottom: 14px;
-      }
-      .contact-form-label {
-        display: block;
-        font-size: 12px;
-        font-weight: 700;
-        color: #1e293b;
-        margin-bottom: 5px;
-      }
-      .contact-form-input, .contact-form-select, .contact-form-textarea {
-        width: 100%;
-        padding: 11px 13px;
-        border: 1px solid #cbd5e1;
-        border-radius: 8px;
-        font-size: 13.5px;
-        color: #0f172a;
-        outline: none;
-        background: #ffffff;
-        transition: all 0.2s ease;
-        box-sizing: border-box;
-      }
-      .contact-form-input:focus, .contact-form-select:focus, .contact-form-textarea:focus {
-        border-color: #00d084;
-        box-shadow: 0 0 0 3px rgba(0, 208, 132, 0.18);
-      }
-      .contact-form-textarea {
-        resize: vertical;
-        min-height: 100px;
-      }
-      .btn-submit-inquiry {
-        width: 100%;
-        background: #00d084;
-        color: #000000;
-        border: none;
-        padding: 13px 0;
-        font-size: 15px;
-        font-weight: 800;
-        border-radius: 8px;
-        cursor: pointer;
-        transition: all 0.25s ease;
-        box-shadow: 0 4px 14px rgba(0, 208, 132, 0.3);
-      }
-      .btn-submit-inquiry:hover {
-        background: #00b371;
-        box-shadow: 0 6px 20px rgba(0, 208, 132, 0.4);
-        transform: translateY(-1px);
-      }
-      .contact-status-msg {
-        margin-top: 14px;
-        padding: 12px;
-        border-radius: 8px;
-        font-size: 13.5px;
-        text-align: center;
-        font-weight: 600;
-      }
-      .contact-status-msg.success {
-        background: #f0fdf4;
-        color: #15803d;
-        border: 1px solid #bbf7d0;
-      }
-      .contact-status-msg.hidden {
-        display: none;
-      }
-      .google-map-section {
-        background: #ffffff;
-        border: 1px solid #e2e8f0;
-        border-radius: 14px;
-        padding: 24px;
-        box-shadow: 0 4px 16px rgba(0, 0, 0, 0.03);
-      }
-      .map-header-title {
-        font-size: 20px;
-        font-weight: 800;
-        color: #0f172a;
-        margin: 0 0 4px 0;
-        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-      }
-      .map-header-sub {
-        font-size: 13px;
-        color: #64748b;
-        margin: 0 0 16px 0;
-      }
       .map-iframe-wrap {
-        width: 100%;
-        height: 340px;
-        border-radius: 10px;
+        border-radius: 12px;
         overflow: hidden;
         border: 1px solid #cbd5e1;
       }
@@ -358,32 +226,17 @@ export function renderContactPage(containerId) {
       @media (max-width: 900px) {
         .contact-grid {
           grid-template-columns: 1fr;
-          gap: 24px;
-        }
-        .contact-form-row {
-          grid-template-columns: 1fr;
-          gap: 10px;
         }
         .contact-hero-title {
-          font-size: 26px;
+          font-size: 28px;
+        }
+        .contact-hero-sub {
+          font-size: 14px;
         }
       }
     </style>
   `;
 
-  // Form submit event handler
-  const form = document.getElementById('contactPageForm');
-  const statusMsg = document.getElementById('contactPageStatusMsg');
-
-  if (form) {
-    form.addEventListener('submit', (e) => {
-      e.preventDefault();
-      const name = document.getElementById('contactFirstName').value;
-      if (statusMsg) {
-        statusMsg.className = 'contact-status-msg success';
-        statusMsg.innerHTML = `✓ Thank you <strong>${name}</strong>! Your inquiry has been sent. Our corporate team will reach out within 24 hours.`;
-        form.reset();
-      }
-    });
-  }
+  // Render Homepage Partner Qualification Form inside Contact Page
+  renderPartnerQualificationForm('contactFormContainer');
 }

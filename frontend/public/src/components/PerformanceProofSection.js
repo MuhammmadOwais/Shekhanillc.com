@@ -1,7 +1,7 @@
 /**
  * Performance Proof Section Component for Shekhani LLC
- * Displays real Cloudinary proof screenshots with dimmed & blurred backgrounds
- * overlaid with crisp verified revenue, ROAS, and order metrics.
+ * Displays real Cloudinary proof screenshots with dimmed & blurred backgrounds.
+ * Clicking any block opens an interactive Lightbox Modal with the blurred full image.
  */
 
 export function renderPerformanceProofSection(containerId) {
@@ -51,8 +51,8 @@ export function renderPerformanceProofSection(containerId) {
         </div>
 
         <div class="proof-grid">
-          ${proofs.map(p => `
-            <div class="proof-card">
+          ${proofs.map((p, index) => `
+            <div class="proof-card" data-index="${index}" style="cursor: pointer;">
               <!-- Dimmed & Blurred Background Screenshot -->
               <div class="proof-bg" style="background-image: url('${p.image}');"></div>
               <div class="proof-overlay"></div>
@@ -65,6 +65,7 @@ export function renderPerformanceProofSection(containerId) {
                 <div class="proof-main-stat">${p.stat}</div>
                 <div class="proof-title">${p.title}</div>
                 <div class="proof-substat">${p.substat}</div>
+                <div class="proof-click-hint">Click to expand preview &rarr;</div>
               </div>
             </div>
           `).join('')}
@@ -72,12 +73,27 @@ export function renderPerformanceProofSection(containerId) {
       </div>
     </section>
 
+    <!-- Lightbox Modal for Blurred Image Expansion -->
+    <div class="proof-lightbox-backdrop hidden" id="proofLightbox">
+      <div class="proof-lightbox-card">
+        <button class="proof-lightbox-close" id="proofLightboxClose" aria-label="Close modal">&times;</button>
+        <div class="proof-lightbox-header">
+          <span class="proof-card-tag" id="lightboxTag"></span>
+          <h3 id="lightboxTitle" style="font-size:22px; font-weight:800; color:#ffffff; margin: 8px 0 4px 0;"></h3>
+          <p id="lightboxStat" style="color:#00d084; font-size:18px; font-weight:800; margin:0;"></p>
+        </div>
+        <div class="proof-lightbox-img-wrapper">
+          <img id="lightboxImage" src="" alt="Proof Screenshot" class="proof-blurred-modal-img">
+        </div>
+      </div>
+    </div>
+
     <style>
       .performance-proof-section {
         background-color: #080c14;
         padding: 70px 24px;
         color: #ffffff;
-        border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+        border-bottom: 1px solid rgba(10, 2, 2, 0.08);
       }
       .proof-container {
         max-width: 1240px;
@@ -118,7 +134,8 @@ export function renderPerformanceProofSection(containerId) {
       }
       .proof-card {
         position: relative;
-        height: 240px;
+        aspect-ratio: 1 / 1;
+        height: auto;
         border-radius: 14px;
         overflow: hidden;
         border: 1px solid rgba(255, 255, 255, 0.12);
@@ -137,19 +154,19 @@ export function renderPerformanceProofSection(containerId) {
         height: 100%;
         background-size: cover;
         background-position: center;
-        opacity: 0.3;
-        filter: blur(5px) grayscale(20%);
+        opacity: 0.4;
+        filter: blur(1.5px) grayscale(10%);
         transition: all 0.4s ease;
       }
       .proof-card:hover .proof-bg {
-        opacity: 0.45;
-        filter: blur(2px) grayscale(0%);
+        opacity: 0.55;
+        filter: blur(0px) grayscale(0%);
         transform: scale(1.04);
       }
       .proof-overlay {
         position: absolute;
         inset: 0;
-        background: linear-gradient(180deg, rgba(15, 23, 42, 0.7) 0%, rgba(15, 23, 42, 0.92) 100%);
+        background: linear-gradient(180deg, rgba(15, 23, 42, 0.65) 0%, rgba(15, 23, 42, 0.88) 100%);
       }
       .proof-content {
         position: relative;
@@ -188,6 +205,93 @@ export function renderPerformanceProofSection(containerId) {
         font-weight: 700;
         margin-top: 4px;
       }
+      .proof-click-hint {
+        font-size: 11px;
+        color: #00d084;
+        font-weight: 700;
+        margin-top: 10px;
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        background: rgba(0, 208, 132, 0.1);
+        border: 1px dashed rgba(0, 208, 132, 0.4);
+        padding: 5px 10px;
+        border-radius: 6px;
+        transition: all 0.25s ease;
+        width: fit-content;
+      }
+      .proof-card:hover .proof-click-hint {
+        background: #00d084;
+        color: #000000;
+        border-style: solid;
+        box-shadow: 0 0 10px rgba(0, 208, 132, 0.4);
+      }
+
+      /* Lightbox Modal CSS */
+      .proof-lightbox-backdrop {
+        position: fixed;
+        inset: 0;
+        z-index: 2500;
+        background: rgba(8, 12, 20, 0.85);
+        backdrop-filter: blur(8px);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 20px;
+      }
+      .proof-lightbox-backdrop.hidden {
+        display: none !important;
+      }
+      .proof-lightbox-card {
+        background: #0f172a;
+        border: 1px solid rgba(0, 208, 132, 0.3);
+        border-radius: 16px;
+        width: 100%;
+        max-width: 800px;
+        padding: 24px;
+        position: relative;
+        box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6);
+      }
+      .proof-lightbox-close {
+        position: absolute;
+        top: 16px;
+        right: 20px;
+        background: rgba(255, 255, 255, 0.1);
+        border: none;
+        color: #ffffff;
+        width: 32px;
+        height: 32px;
+        border-radius: 50%;
+        font-size: 22px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        transition: background 0.2s ease;
+      }
+      .proof-lightbox-close:hover {
+        background: #00d084;
+        color: #000000;
+      }
+      .proof-lightbox-header {
+        margin-bottom: 16px;
+      }
+      .proof-lightbox-img-wrapper {
+        border-radius: 10px;
+        overflow: hidden;
+        max-height: 480px;
+        background: #000000;
+      }
+      .proof-blurred-modal-img {
+        width: 100%;
+        height: auto;
+        max-height: 480px;
+        object-fit: contain;
+        display: block;
+        opacity: 0.95;
+        filter: blur(1px);
+        transition: filter 0.3s ease;
+      }
 
       @media (max-width: 1024px) {
         .proof-grid {
@@ -205,16 +309,78 @@ export function renderPerformanceProofSection(containerId) {
           font-size: 13px;
         }
         .proof-grid {
-          grid-template-columns: 1fr;
+          display: flex !important;
+          overflow-x: auto !important;
+          scroll-snap-type: x mandatory;
           gap: 14px;
+          padding-bottom: 14px;
+          -webkit-overflow-scrolling: touch;
+          scrollbar-width: none;
+        }
+        .proof-grid::-webkit-scrollbar {
+          display: none;
         }
         .proof-card {
-          height: 200px;
+          flex: 0 0 78%;
+          max-width: 270px;
+          aspect-ratio: 1 / 1 !important;
+          height: auto !important;
+          scroll-snap-align: start;
+        }
+        .proof-content {
+          padding: 18px 16px;
         }
         .proof-main-stat {
-          font-size: 26px;
+          font-size: 24px;
+          margin-top: 6px;
+        }
+        .proof-title {
+          font-size: 13px;
+        }
+        .proof-substat {
+          font-size: 11.5px;
+          margin-top: 2px;
+        }
+        .proof-click-hint {
+          font-size: 10px;
+          margin-top: 4px;
+          padding: 3px 8px;
         }
       }
     </style>
   `;
+
+  // Attach Click Handlers to Expand Lightbox Modal with Dimmed & Blurred Image
+  const modal = document.getElementById('proofLightbox');
+  const modalClose = document.getElementById('proofLightboxClose');
+  const lbImage = document.getElementById('lightboxImage');
+  const lbTitle = document.getElementById('lightboxTitle');
+  const lbStat = document.getElementById('lightboxStat');
+  const lbTag = document.getElementById('lightboxTag');
+
+  document.querySelectorAll('.proof-card').forEach(card => {
+    card.addEventListener('click', () => {
+      const idx = card.getAttribute('data-index');
+      const item = proofs[idx];
+      if (item && modal) {
+        lbImage.src = item.image;
+        lbTitle.textContent = item.title;
+        lbStat.textContent = `${item.stat} (${item.substat})`;
+        lbTag.textContent = item.tag;
+        modal.classList.remove('hidden');
+      }
+    });
+  });
+
+  if (modalClose) {
+    modalClose.addEventListener('click', () => {
+      modal.classList.add('hidden');
+    });
+  }
+
+  if (modal) {
+    modal.addEventListener('click', (e) => {
+      if (e.target === modal) modal.classList.add('hidden');
+    });
+  }
 }

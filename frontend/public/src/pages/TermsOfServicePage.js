@@ -91,7 +91,7 @@ export function renderTermsOfServicePage(containerId) {
             </div>
             <div>
               <strong>Questions regarding our Terms of Service?</strong>
-              <p style="margin: 2px 0 0 0; font-size: 13px; color: #475569;">Contact our Legal Department at <a href="mailto:haris@shekhanillc.com" style="color: #059669; font-weight: 700;">haris@shekhanillc.com</a> or call <a href="tel:+13149049538" style="color: #059669; font-weight: 700;">+1 (314) 904-9538</a>.</p>
+              <p style="margin: 2px 0 0 0; font-size: 13px; color: #475569;">Contact our Legal Department at <a href="mailto:sales@shekhanillc.com" style="color: #059669; font-weight: 700;">sales@shekhanillc.com</a> or call <a href="tel:+13149049538" style="color: #059669; font-weight: 700;">+1 (314) 904-9538</a>.</p>
             </div>
           </div>
 

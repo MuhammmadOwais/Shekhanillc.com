@@ -23,7 +23,7 @@ export function renderNavbar(containerId) {
 
         <!-- Brand Logo -->
         <a href="/" class="brand-logo white-logo-link" id="headerBrandLogo">
-          <img src="https://res.cloudinary.com/sfjl53dg/image/upload/v1785541119/logoshekhanilc_fa0vxy.png" alt="Shekhani LLC Logo" class="spreetail-white-logo" onerror="this.style.display='none';this.parentElement.querySelector('.logo-text-fallback').style.display='flex'">
+          <img src="https://res.cloudinary.com/sfjl53dg/image/upload/v1785787233/ChatGPT_Image_Aug_2_2026_11_57_51_PM_snkitt.png" alt="Shekhani LLC Logo" class="spreetail-white-logo" onerror="this.style.display='none';this.parentElement.querySelector('.logo-text-fallback').style.display='flex'">
           <span class="logo-text-fallback" style="display:none;color:#ffffff;font-size:18px;font-weight:900;letter-spacing:1px;align-items:center;gap:4px;"><span style="color:#00d084">S</span>HEKHANI LLC</span>
         </a>
 
@@ -120,7 +120,7 @@ export function renderNavbar(containerId) {
 
       <div class="mobile-drawer-bottom dark-bottom">
         <button class="spreetail-outline-btn full-width" id="drawerSignIn">Partner Login</button>
-        <button class="spreetail-cta-btn full-width" id="drawerSignUp">Get Started</button>
+        <button class="spreetail-cta-btn cyan-signup full-width" id="drawerSignUp">Apply for Partnership</button>
       </div>
     </aside>
 
@@ -132,6 +132,17 @@ export function renderNavbar(containerId) {
         top: 0;
         z-index: 1000;
         box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+      }
+      .cyan-signup {
+        background-color: #00D2FF !important;
+        color: #090D16 !important;
+        font-weight: 800 !important;
+        box-shadow: 0 4px 15px rgba(0, 210, 255, 0.3) !important;
+      }
+      .cyan-signup:hover {
+        background-color: #00e5ff !important;
+        transform: translateY(-1px);
+        box-shadow: 0 6px 20px rgba(0, 210, 255, 0.4) !important;
       }
       .spreetail-header-inner {
         display: flex;
@@ -427,15 +438,17 @@ export function renderNavbar(containerId) {
   setupMobileDrawer();
 }
 
+import { openIntakeWizardModal } from './IntakeWizardModal.js';
+
 function setupAuthTriggers() {
   const triggerAuth = (mode, role) => openAuthModal(mode, role);
 
-  document.getElementById('signupBtn')?.addEventListener('click', () => triggerAuth('signup', 'buy'));
+  document.getElementById('signupBtn')?.addEventListener('click', () => openIntakeWizardModal());
   document.getElementById('navSignIn')?.addEventListener('click', () => triggerAuth('signin'));
 
   // Drawer Auth Links
   document.getElementById('drawerSignIn')?.addEventListener('click', () => { closeDrawer(); triggerAuth('signin'); });
-  document.getElementById('drawerSignUp')?.addEventListener('click', () => { closeDrawer(); triggerAuth('signup', 'buy'); });
+  document.getElementById('drawerSignUp')?.addEventListener('click', () => { closeDrawer(); openIntakeWizardModal(); });
 
   // Drawer Navigation Links
   document.getElementById('drawerHome')?.addEventListener('click', () => { closeDrawer(); if (window.navigateToRoute) window.navigateToRoute('/'); });
