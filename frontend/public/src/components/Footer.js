@@ -22,6 +22,8 @@ export function renderFooter(containerId) {
           <div class="contact-item-inline">
             <span class="contact-label-small">Email:</span>
             <a href="mailto:sales@shekhanillc.com" class="contact-link-small">sales@shekhanillc.com</a>
+            <span class="pipe-sep" style="margin: 0 4px;">|</span>
+            <a href="mailto:haris@shekhanillc.com" class="contact-link-small">haris@shekhanillc.com</a>
           </div>
           <span class="contact-dot-sep">•</span>
 
