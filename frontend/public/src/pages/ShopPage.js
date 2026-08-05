@@ -62,6 +62,7 @@ export function renderShopPage(containerId, { allProducts, cart, onAddToCart, on
           background-color: #fcfcfc;
           padding: 30px 0 60px;
           min-height: 85vh;
+          color: #111111;
         }
 
         .shop-container {
@@ -74,6 +75,7 @@ export function renderShopPage(containerId, { allProducts, cart, onAddToCart, on
           margin-bottom: 20px;
           border-bottom: 1px solid #eaeaea;
           padding-bottom: 14px;
+          text-align: left;
         }
 
         .shop-title-group h1 {
@@ -132,11 +134,16 @@ export function renderShopPage(containerId, { allProducts, cart, onAddToCart, on
         }
 
         .filter-select:focus, .shop-search-input:focus {
-          border-color: var(--color-turquoise, #00bfa5);
-          box-shadow: 0 0 0 2px rgba(0, 191, 165, 0.15);
+          border-color: #00d084;
+          box-shadow: 0 0 0 2px rgba(0, 208, 132, 0.15);
         }
 
-        /* Shop Grid Layout matching Faire Bestsellers Cards */
+        .filter-select option {
+          background: #ffffff;
+          color: #111111;
+        }
+
+        /* Shop Grid Layout matching Bestsellers Cards */
         .shop-products-grid {
           display: grid;
           grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
@@ -156,6 +163,7 @@ export function renderShopPage(containerId, { allProducts, cart, onAddToCart, on
 
         .shop-card:hover {
           transform: translateY(-3px);
+          border-color: #e5e5e5;
           box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
         }
 
@@ -236,9 +244,20 @@ export function renderShopPage(containerId, { allProducts, cart, onAddToCart, on
         .add-to-cart-btn {
           margin-top: auto;
           width: 100%;
-          background: var(--color-turquoise, #00bfa5);
-          color: #ffffff;
+          background: #00d084;
+          color: #000000;
           border: none;
+          padding: 9px 12px;
+          font-size: 12.5px;
+          font-weight: 800;
+          border-radius: 6px;
+          cursor: pointer;
+          transition: background-color 0.2s;
+        }
+
+        .add-to-cart-btn:hover {
+          background: #00b371;
+        }
           padding: 9px 0;
           font-size: 12.5px;
           font-weight: 700;
