@@ -638,6 +638,30 @@ export function initHomePage() {
     });
   }
 
+  const defaultProductsList = [
+    { id: 1, sku: "SKU-GOLF-01", name: "Professional Golf Glove & Ball Set", category: "Golf", price: 28.00, isFeatured: true, inStock: true, image: "https://images.unsplash.com/photo-1535131749006-b7f58c99034b?w=600&auto=format&fit=crop&q=80", description: "Premium cabretta leather golf glove with 12 tour-grade golf balls for professional players." },
+    { id: 2, sku: "SKU-GOLF-02", name: "Precision Laser Golf Rangefinder", category: "Golf", price: 89.00, isFeatured: true, inStock: true, image: "https://images.unsplash.com/photo-1592919505780-303950717480?w=600&auto=format&fit=crop&q=80", description: "High precision 800-yard laser rangefinder with slope measurement and flag lock." },
+    { id: 3, sku: "SKU-GOLF-03", name: "Tour Stand Golf Bag Lightweight", category: "Golf", price: 110.00, inStock: true, image: "https://images.unsplash.com/photo-1593111774601-dfbce3240b2a?w=600&auto=format&fit=crop&q=80", description: "Ergonomic 14-divider lightweight golf stand bag with waterproof garment pockets." },
+    { id: 4, sku: "SKU-ART-01", name: "Brushes for Kids & Artist Painting", category: "Art & Craft", price: 18.00, isFeatured: true, inStock: true, image: "https://images.unsplash.com/photo-1513519245088-0e12902e5a38?w=600&auto=format&fit=crop&q=80", description: "Assorted paint brushes set with durable bristles for school painting and watercolor." },
+    { id: 5, sku: "SKU-ART-02", name: "Jumbo Sidewalk Chalk Holders Set", category: "Art & Craft", price: 9.00, inStock: true, image: "https://images.unsplash.com/photo-1588072432836-e10032774350?w=600&auto=format&fit=crop&q=80", description: "Colorful sidewalk chalk holder set protecting hands while drawing outdoor pavement art." },
+    { id: 6, sku: "SKU-ART-03", name: "24-Color Professional Acrylic Paint Tubes", category: "Art & Craft", price: 24.00, inStock: true, image: "https://images.unsplash.com/photo-1579783900882-c0d3dad7b119?w=600&auto=format&fit=crop&q=80", description: "Rich pigment acrylic paint set for canvas, wood, and ceramic crafting." },
+    { id: 7, sku: "SKU-BEAUTY-01", name: "Organic Hydrating Rosewater Facial Mist", category: "Beauty & Personal Care", price: 16.50, isFeatured: true, inStock: true, image: "https://images.unsplash.com/photo-1556228720-195a672e8a03?w=600&auto=format&fit=crop&q=80", description: "100% pure organic rosewater toner mist for instant skin hydration and glow." },
+    { id: 8, sku: "SKU-BEAUTY-02", name: "Vitamin C Brightening Facial Serum 30ml", category: "Beauty & Personal Care", price: 22.00, isFeatured: true, inStock: true, image: "https://images.unsplash.com/photo-1608248597261-83325705438f?w=600&auto=format&fit=crop&q=80", description: "Potent 20% Vitamin C serum enriched with hyaluronic acid for hyperpigmentation treatment." },
+    { id: 9, sku: "SKU-BEAUTY-03", name: "Natural Charcoal Detoxifying Bath Soap", category: "Beauty & Personal Care", price: 7.50, inStock: true, image: "https://images.unsplash.com/photo-1607006482602-76ca072b4482?w=600&auto=format&fit=crop&q=80", description: "Activated bamboo charcoal body bar deeply cleansing pores and removing impurities." },
+    { id: 10, sku: "SKU-TOOLS-01", name: "Heavy-Duty 45-Piece Home Tool Set", category: "DIY & Tools", price: 42.00, isFeatured: true, inStock: true, image: "https://images.unsplash.com/photo-1581147036324-c17ac41dfa6c?w=600&auto=format&fit=crop&q=80", description: "Complete household repair tool kit with hammer, pliers, screwdriver bits, and tape measure." },
+    { id: 11, sku: "SKU-FASHION-01", name: "Classic Minimalist Polarized Sunglasses", category: "Fashion", price: 29.99, isFeatured: true, inStock: true, image: "https://images.unsplash.com/photo-1511499767150-a48a237f0083?w=600&auto=format&fit=crop&q=80", description: "UV400 protection polarized sunglasses with lightweight stainless steel frame." },
+    { id: 12, sku: "SKU-HEALTH-01", name: "Sonic Electric Toothbrush With 4 Heads", category: "Household & Health", price: 34.00, isFeatured: true, inStock: true, image: "https://images.unsplash.com/photo-1559599101-f09722fb4948?w=600&auto=format&fit=crop&q=80", description: "40,000 VPM sonic power toothbrush with 5 smart cleaning modes and travel case." },
+    { id: 13, sku: "SKU-KITCHEN-01", name: "Non-Stick Ceramic Frying Pan 10-Inch", category: "Home & Kitchen", price: 36.00, isFeatured: true, inStock: true, image: "https://images.unsplash.com/photo-1584269600464-37b1b58a9fe7?w=600&auto=format&fit=crop&q=80", description: "Eco-friendly toxin-free ceramic non-stick skillet for effortless cooking and cleaning." },
+    { id: 14, sku: "SKU-OFFICE-01", name: "Ergonomic Memory Foam Seat Cushion", category: "Office Supplies", price: 25.00, inStock: true, image: "https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=600&auto=format&fit=crop&q=80", description: "Contoured orthopedic foam tailbone cushion relieving lower back pressure during work." },
+    { id: 15, sku: "SKU-GARDEN-01", name: "Solar Outdoor LED Garden Pathway Lights", category: "Patio Lawn & Garden", price: 31.00, inStock: true, image: "https://images.unsplash.com/photo-1513836279014-a89f7a76ae86?w=600&auto=format&fit=crop&q=80", description: "Waterproof solar landscape lights illuminating garden walkways automatically at dusk." },
+    { id: 16, sku: "SKU-PET-01", name: "Interactive Automatic Laser Toy for Cats", category: "Pet Supplies", price: 19.50, inStock: true, image: "https://images.unsplash.com/photo-1545249390-6bdfa286032f?w=600&auto=format&fit=crop&q=80", description: "360-degree rotating automated red laser light exerciser keeping cats active." },
+    { id: 17, sku: "SKU-TOYS-01", name: "Educational STEM Solar Robot Kit 12-in-1", category: "Toys & Games", price: 26.00, isFeatured: true, inStock: true, image: "https://images.unsplash.com/photo-1563089145-599997674d42?w=600&auto=format&fit=crop&q=80", description: "Solar powered building science kit for kids promoting hands-on engineering skills." }
+  ];
+
+  // Initialize with fallback static products immediately
+  window.shekhaniGlobalProducts = defaultProductsList;
+  allProducts = defaultProductsList;
+
   async function fetchCategories() {
     try {
       const res = await fetch(`${API_BASE}/categories`);
@@ -657,13 +681,13 @@ export function initHomePage() {
     try {
       const res = await fetch(`${API_BASE}/products`);
       const result = await res.json();
-      if (result.success && Array.isArray(result.data)) {
+      if (result.success && Array.isArray(result.data) && result.data.length > 0) {
         allProducts = result.data;
         // Refresh active route with fetched products
         window.navigateToRoute(window.location.pathname, false);
       }
     } catch (err) {
-      console.error('Error fetching products:', err);
+      console.warn('Backend API unavailable, using embedded products catalog:', err);
     }
   }
 }

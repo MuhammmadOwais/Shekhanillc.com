@@ -58,7 +58,7 @@ export function renderCartPage(containerId, { cart, onUpdateQuantity, onRemoveIt
         color: #ffffff;
       }
 
-      .cart-layout-grid {
+      .cart-layout-grid {  
         display: grid;
         grid-template-columns: 2fr 1fr;
         gap: 32px;
